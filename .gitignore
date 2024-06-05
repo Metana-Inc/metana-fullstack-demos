@@ -1,3 +1,10 @@
+# VSCode stuff
+*.code-workspace
+.vscode/
+
+# Mac stuff
+.DS_Store
+
 # Logs
 logs
 *.log
