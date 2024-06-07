@@ -4,29 +4,83 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>A simple HTML Document</title>
+
+    <style>
+        /* Section headers */
+        .section-title {
+            font-size: larger;
+            font-family: 'Courier New', Courier, monospace;
+            margin-top: 60px;
+            font-weight: 600;
+            padding-bottom: 10px;
+            width: 40%;
+            border-bottom: 1px solid #313131;
+        }
+    </style>
 </head>
 <body>
     <h1>An HTML document with inline CSS styles</h1>
+    <h3>Sections:</h3>
+    <ul>
+        <li><a href="#headings">headings</a></li>
+        <li><a href="#fonts">fonts</a></li>
+        <li><a href="#margins-and-padding">margins-and-padding</a></li>
+        <li><a href="#alignment">alignment</a></li>
+        <li><a href="#background-colors">background-colors</a></li>
+        <li><a href="#text-styles-and-fonts">text-styles-and-fonts</a></li>
+        <li><a href="#font-sizes">font-sizes</a></li>
+        <li><a href="#text-colors">text-colors</a></li>
+    </ul>
+    <!-- Headings -->
+    <h2 id="headings" class="section-title">Headings</h2>
     <h2>A simple H2 heading</h2>
     <h3>A simple H3 heading</h3>
-    <h3 style="font-family: 'Courier New', Courier, monospace;">An H3 heading with mono font</h3>
-    <h3 style="font-family: Arial, Helvetica, sans-serif;">An H3 heading with sans font</h3>
-    <h3 style="font-family: serif;">An H3 heading with serif font</h3>
 
-    <div style="margin: 50px auto;"><p>This is a div with some vertical margins</p></div>
+    <!-- Fonts -->
+    <h2 id="fonts" class="section-title">Fonts</h2>
+    <p style="font-family: 'Courier New', Courier, monospace;">A paragraph with mono font</p>
+    <p style="font-family: Arial, Helvetica, sans-serif;">A paragraph with sans font</p>
+    <p style="font-family: serif;">A paragraph with serif font</p>
+
+    <!-- Margins and padding -->
+    <h2 id="margins-and-padding" class="section-title">Margins and padding</h2>
+    <div style="margin: 50px auto; background-color: lightgray;"><p>This is a div with some vertical margins</p></div>
+    <div style="margin: auto 50px; background-color: lightgray;"><p>This is a div with some horizontal margins</p></div>
+    <div style="padding: 25px 0; background-color: lightgray;"><p>This is a div with some vertical padding</p></div>
+    <div style="padding: 0 50px; background-color: lightgray;"><p>This is a div with some horizontal padding</p></div>
     
+    <!-- Alignment -->
+    <h2 id="alignment" class="section-title">Alignment</h2>
+    <p style="text-align: center; background-color: lightgray;">This is a center-aligned paragraph</p>
+    <p style="text-align: right; background-color: lightgray;">This is a right-aligned paragraph</p>
+    <p style="text-align: left; background-color: lightgray;">This is a left-aligned paragraph</p>
+
+    <!-- Background colors -->
+    <h2 id="background-colors" class="section-title">Background colors</h2>
+    <p style="background-color: aqua;">This is a paragraph with a lovely background color</p>
+    <p style="background-color: aquamarine;">This is a paragraph with a background color</p>
+    <p style="background-color: yellow;">This is a paragraph with a background color</p>
+
+    <!-- Text Styles and fonts -->
+    <h2 id="text-styles-and-fonts" class="section-title">Text Styles and fonts</h2>
     <p style="font-weight: 600;">This is a strong paragraph</p>
     <p style="font-style: italic;">This is an italic paragraph</p>
-    <p style="text-align: center;">This is a center-aligned paragraph</p>
-    <p style="font-size: xx-large;">This is an paragraph with some really big text</p>
+    <p>This is a paragraph with <span style="text-decoration: underline;">underlined</span> text</p>
+    <p>This is a paragraph with <br>line breaks</p>
+
+    <!-- Font sizes -->
+    <h2 id="font-sizes" class="section-title">Font sizes</h2>
+    <p style="font-size: x-small;">This is a paragraph with some tiny text</p>
+    <p style="font-size: small;">This is a paragraph with some small text</p>
+    <p style="font-size: normal;">This is a paragraph with some normal text</p>
+    <p style="font-size: x-large;">This is a paragraph with some really big text</p>
+    <p style="font-size: xx-large;">This is a paragraph with some huge text</p>
+
+    <!-- Text colors -->
+    <h2 id="text-colors" class="section-title">Text colors</h2>
     <p style="color: green;">This is a paragraph with green text</p>
     <p style="color: blue;">This is a paragraph with blue text</p>
     <p style="color: red;">This is a paragraph with red text</p>
 
-    <p style="margin: 30px 0px;background-color: aqua;">This is a paragraph with a lovely background color</p>
-    <p style="padding: 0 100px;background-color: aquamarine;">This is a paragraph with a background color and some horizontal padding </p>
-    <p style="padding: 30px 0px;background-color: yellow;">This is a paragraph with a background color and some vertical padding </p>
-    <p>This is a paragraph with <br>line breaks</p>
-    <p>This is a paragraph with <span style="text-decoration: underline;">underlined</span> text</p>
 </body>
 </html>
