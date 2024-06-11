@@ -28,6 +28,8 @@ app.get('/hello', function (req, res) {
   console.log(`query parameters: `, req.query);
   res.render('hello', {username: name});
 });
+
+
 app.listen(PORT, function () {
   console.log(`Server started at http://localhost:${PORT}`);
 });
