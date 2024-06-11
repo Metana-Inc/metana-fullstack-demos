@@ -3,3 +3,8 @@
 ## Sections
 - 4.1 - Simple hello-world Express app
 - 4.2 - Express app serving HTML file
+- 4.3 - Express app serving HTML from a file.
+- 4.4 - Express app serving HTML from files, with multiple paths
+- 4.5 - Express app with Handlebars templates
+- 4.6 - Express app with Handlebars templates and dynamic urls
+- 4.7 - Express app with Handlebars templates and partial templates
