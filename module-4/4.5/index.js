@@ -8,32 +8,33 @@ const PORT = 3000;
 // The templates are stored by default in the /views directory.
 // This expects a layout file in '/views/layouts called 'main.hbs"
 app.engine('hbs', exphbs.engine({
-  extname: '.hbs' // Default extension is '.handlebars'. We are specifying the file extension as '.hbs' for brevity
+  extname: '.hbs', // Default extension is '.handlebars'. We are specifying the file extension as '.hbs' for brevity
+  defaultLayout: false, // We don't use a "layout" template to wrap this template
 }));
 app.set('view engine', 'hbs');
 
 // Index page
 app.get('/', function (req, res) {
-  res.render('index', {layout: false}); // layout: false means we don't use a "layout" template to wrap this template
+  res.render('index');
 });
 
 // Hello page - Sam
 app.get('/hello-sam', function (req, res) {
-  res.render('hello', {username: "Sam", layout: false});
+  res.render('hello', {username: "Sam"});
 });
 
 // Hello page - Sue
 app.get('/hello-sue', function (req, res) {
-  res.render('hello', {username: "Sue", layout: false});
+  res.render('hello', {username: "Sue"});
 });
 
 // Hello page - Tom
 app.get('/hello-tom', function (req, res) {
-  res.render('hello', {username: "Tom", layout: false});
+  res.render('hello', {username: "Tom"});
 });
 // Hello page - Jerry
 app.get('/hello-jerry', function (req, res) {
-  res.render('hello', {username: "Jerry", layout: false});
+  res.render('hello', {username: "Jerry"});
 });
 
 app.listen(PORT, function () {
