@@ -1,14 +1,17 @@
 // 4.6 - Express app with Mustache templates and dynamic urls
 const express = require('express');
-const mustacheExpress = require('mustache-express');
+const exphbs = require('express-handlebars');
 const app = express();
 const PORT = 3000;
 
-// We have to set the Express app to use Mustache for rendering
-// We don't use res.Sendfile anymore -- we're rendering these templates into HTML now, using Mustache.
-// The templates are stored in the /views directory by default, and we refer to them by name, without '.mustache'
-app.engine('mustache', mustacheExpress());
-app.set('view engine', 'mustache');
+// Set the view engine for express to use Handlebars
+// The templates are stored by default in the /views directory.
+// This expects a layout file in '/views/layouts called 'main.hbs"
+app.engine('hbs', exphbs.engine({
+  extname: '.hbs' // Default extension is '.handlebars'. We are specifying the file extension as '.hbs' for brevity
+}));
+app.set('view engine', 'hbs');
+
 
 // Index page
 app.get('/', function (req, res) {
