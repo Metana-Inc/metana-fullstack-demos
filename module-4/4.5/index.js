@@ -14,26 +14,26 @@ app.set('view engine', 'hbs');
 
 // Index page
 app.get('/', function (req, res) {
-  res.render('index');
+  res.render('index', {layout: false}); // layout: false means we don't use a "layout" template to wrap this template
 });
 
 // Hello page - Sam
 app.get('/hello-sam', function (req, res) {
-  res.render('hello', {username: "Sam"});
+  res.render('hello', {username: "Sam", layout: false});
 });
 
 // Hello page - Sue
 app.get('/hello-sue', function (req, res) {
-  res.render('hello', {username: "Sue"});
+  res.render('hello', {username: "Sue", layout: false});
 });
 
 // Hello page - Tom
 app.get('/hello-tom', function (req, res) {
-  res.render('hello', {username: "Tom"});
+  res.render('hello', {username: "Tom", layout: false});
 });
 // Hello page - Jerry
 app.get('/hello-jerry', function (req, res) {
-  res.render('hello', {username: "Jerry"});
+  res.render('hello', {username: "Jerry", layout: false});
 });
 
 app.listen(PORT, function () {
