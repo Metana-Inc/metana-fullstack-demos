@@ -1,10 +1,21 @@
 <h1>User details</h1>
 <p>Welcome to the User page. The ID parameter is from the route URL.</p>
-<div>
-    <p>User ID: {{ userId}}</p>
+
+<div style="margin: 40px 0; text-align: center;">
+
+{{!-- Start of "if" block --}}
+{{#if user}}
+    <h3>User details:</h3>
+    <ul>
+        <li>User ID: {{ user.userId}}</li>
+        <li>Name: {{ user.name}}</li>
+        <li>Email: {{ user.email}}</li>
+    </ul>
+{{ else }}
+    <h3>
+    No user found with that ID.
+    </h3>
+{{/if }}    {{!-- End of the "if" block --}}
 </div>
 
-<p>Links:</p>
-<ul>
-    <li><a href="/">Back to home</a></li>
-</ul>
+{{> nav-back-to-home}}  {{!-- We include a partial for the "Back to home" link --}}

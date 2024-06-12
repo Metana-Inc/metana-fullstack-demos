@@ -20,8 +20,18 @@ app.get('/', function (req, res) {
 
 // User page with dynamic userId parameters from url
 app.get('/user/:userId', function (req, res) {
+  const users = [
+    { userId: 1, name: 'John', email: 'john@example.com' },
+    { userId: 2, name: 'Jack', email: 'jack@example.com' },
+    { userId: 3, name: 'Sara', email: 'sara@example.com' },
+    { userId: 4, name: 'Lily', email: 'lily@example.com' },
+    { userId: 4, name: 'Susan', email: 'susan@example.com' },
+  ]
   const userId  = req.params.userId; // This gets the userId from the request url
-  res.render('user', {userId: userId});
+  var user = users.find((u) => u.userId === userId) // Filter the users array for a matching user by ID
+  console.log(`userId route parameter: `, userId);
+  console.log(`user: `, user);
+  res.render('user', {user: user});
 });
 
 // Hello page with username extracted from query parameters
