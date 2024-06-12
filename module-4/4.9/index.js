@@ -56,6 +56,15 @@ app.get('/kitten', function (req, res) {
 });
 
 
+// A page with an image
+app.get('/dog', function (req, res) {
+  res.render('centered-image', {
+    imagePath: 'dog.jpg',
+    description: 'A cute dog',
+  });
+});
+
+
 
 app.listen(PORT, function () {
   console.log(`Server started at http://localhost:${PORT}`);
