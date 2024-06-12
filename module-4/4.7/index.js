@@ -19,7 +19,8 @@ app.get('/', function (req, res) {
 });
 
 // User page with dynamic userId parameters from url
-app.get('/user/:userId', function (req, res) {
+// The '?' means we may not receive this parameter; (eg: localhost:3000/user) but we should still render the route.
+app.get('/users/:userId?', function (req, res) {
   const users = [
     { userId: 1, name: 'John', email: 'john@example.com' },
     { userId: 2, name: 'Jack', email: 'jack@example.com' },
@@ -27,9 +28,12 @@ app.get('/user/:userId', function (req, res) {
     { userId: 4, name: 'Lily', email: 'lily@example.com' },
     { userId: 4, name: 'Susan', email: 'susan@example.com' },
   ]
-  const userId  = req.params.userId; // This gets the userId from the request url
-  var user = users.find((u) => u.userId === userId) // Filter the users array for a matching user by ID
-  console.log(`userId route parameter: `, userId);
+  // Get the userId from the request url
+  const userId  = req.params.userId; 
+  
+  // Filter the users array for a matching user by ID. 
+  var user = users.find((u) => u.userId.toString() === userId) // Note that the 'userId' parameter will be a string, not an integer.
+  console.log(`userId: `, userId);
   console.log(`user: `, user);
   res.render('user', {user: user});
 });
