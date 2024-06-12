@@ -4,13 +4,8 @@ Code demos for for the Metana Fullstack Bootcamp
 ## Structure
 The folders are structured according module and task.
 ```
-/module-1
-    /1.1
-        hello.html
-    /1.2
-        hello-with-css.html
-    /1.3
-        ... etc
+/module-2 - HTML and CSS basics
+/module-4 - Node.js and Express
 ```
 
 ## License
