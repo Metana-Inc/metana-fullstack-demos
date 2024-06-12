@@ -8,4 +8,6 @@
 - 4.5 - Express app with Handlebars templates
 - 4.6 - Express app with Handlebars and dynamic url paramters
 - 4.7 - Express app with Handlebars and layouts
-- 4.7 - Express app with Handlebars layouts and partials
+- 4.7 - Express app with Handlebars layout templates
+- 4.8 - Express app with Handlebars layouts and partials
+- 4.9 - Express app with Handlebars layouts, partials and static directory
