@@ -15,7 +15,7 @@ app.set('view engine', 'hbs');
 
 // Index page
 app.get('/', function (req, res) {
-  res.render('index');
+  res.render('index', {layout: 'no-back-button'});  // We use a different layout for main without a back button
 });
 
 // User page with dynamic userId parameters from url
