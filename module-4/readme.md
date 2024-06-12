@@ -6,5 +6,6 @@
 - 4.3 - Express app serving HTML from a file.
 - 4.4 - Express app serving HTML from files, with multiple paths
 - 4.5 - Express app with Handlebars templates
-- 4.6 - Express app with Handlebars templates and dynamic urls
-- 4.7 - Express app with Handlebars templates and partial templates
+- 4.6 - Express app with Handlebars and dynamic url paramters
+- 4.7 - Express app with Handlebars and layouts
+- 4.7 - Express app with Handlebars layouts and partials

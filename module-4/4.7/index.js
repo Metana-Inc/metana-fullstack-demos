@@ -1,4 +1,4 @@
-// 4.6 - Express app with Mustache templates and partials
+// 4.7 - Express app with Handlebars layout templates
 const express = require('express');
 const app = express();
 const exphbs = require('express-handlebars');
@@ -15,7 +15,7 @@ app.set('view engine', 'hbs');
 
 // Index page
 app.get('/', function (req, res) {
-  res.render('index', {layout: 'no-back-button'});  // We use a different layout for main without a back button
+  res.render('index')
 });
 
 // User page with dynamic userId parameters from url
