@@ -64,9 +64,4 @@ app.post('/blogs', (req, res) => {
   res.json(blogs);
 });
 
-// PUT blog -- single
-app.get('/blogs/:id', (req, res) => {
-  res.json(blogs);
-});
-
 app.listen(3000, () => console.log(`server started on port ${port}`));
