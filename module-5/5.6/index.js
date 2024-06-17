@@ -22,7 +22,8 @@ var blogs = [
 
 // Find a single blog by ID
 function blogsFindById(blogId) {
-  return blogs.find((x) => x.id.toString() === id);
+  blogId = parseInt(blogId, 10); // convert to int
+  return blogs.find((x) => x.id === blogId);
 }
 
 // Get the ID of the last blog entry
@@ -49,8 +50,8 @@ function addBlog({ title, content }) {
 // Update a single blog by ID
 function blogsUpdateById(updatedBlog) {
   const { id } = updatedBlog;
-  const idx = blogs.findIndex((x) => x.id.toString() === id);
-  if (idx !== -1) {
+  const idx = blogs.findIndex((x) => x.id === id);
+  if (idx == -1) {
     throw new Error(`blog with id ${id} not found`);
   }
   blogs[idx] = updatedBlog;
@@ -108,7 +109,7 @@ app.get('/blogs/:id', (req, res) => {
 // UPDATE blog -- single
 app.put('/blogs/:id', (req, res) => {
   try {
-    const { id } = req.params;
+    const id = parseInt(req.params.id, 10);
     const { title, content } = req.body;
     // Validate content
     if (!title || !content) {
