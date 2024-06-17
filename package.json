@@ -1,0 +1,27 @@
+{
+  "name": "metana-express-rest-api",
+  "version": "1.0.0",
+  "description": "Demo of a REST API written in Node with Express.js and MongoDB as database backend",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fieldse/metana-fullstack-demos.git"
+  },
+  "keywords": [
+    "rest",
+    "demo",
+    "api",
+    "rest-api",
+    "express",
+    "mongo"
+  ],
+  "author": "matt fields -- matt@mattfields.dev",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/fieldse/metana-fullstack-demos/issues"
+  },
+  "homepage": "https://github.com/fieldse/metana-fullstack-demos#readme"
+}
