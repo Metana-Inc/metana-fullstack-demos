@@ -58,7 +58,7 @@ app.post('/blogs', (req, res) => {
     console.log(`posted blog: ${blog}`);
   } catch (err) {
     return res.status(400).send({
-      message: `invalid request: ${err}`,
+      message: `invalid request: ${err.message}`,
     });
   }
   res.json(blogs);
