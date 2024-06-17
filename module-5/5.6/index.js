@@ -46,6 +46,16 @@ function addBlog({ title, content }) {
   blogs.push(blog);
 }
 
+// Update a single blog by ID
+function blogsUpdateById(updatedBlog) {
+  const { id } = updatedBlog;
+  const idx = blogs.findIndex((x) => x.id.toString() === id);
+  if (idx !== -1) {
+    throw new Error(`blog with id ${id} not found`);
+  }
+  blogs[idx] = updatedBlog;
+}
+
 // Index route
 app.get('/', (req, res) => {
   res.send('Hello from index page');
@@ -83,6 +93,37 @@ app.post('/blogs', (req, res) => {
     });
   }
   res.json(blogs);
+});
+
+// GET blog -- single
+app.get('/blogs/:id', (req, res) => {
+  const { id } = req.params;
+  const blog = blogsFindById(id);
+  if (!blog) {
+    return res.status(404).send({ message: 'blog not found' });
+  }
+  res.status(200).json(blog);
+});
+
+// UPDATE blog -- single
+app.put('/blogs/:id', (req, res) => {
+  try {
+    const { id } = req.params;
+    const { title, content } = req.body;
+    // Validate content
+    if (!title || !content) {
+      throw new Error('title or content is empty');
+    }
+    const existing = blogsFindById(id) || {}; // find existing or create new
+    const updated = { ...existing, id, title, content };
+    blogsUpdateById(updated);
+    console.log(`updated blog: ${updated}`);
+    res.status(200).json(updated);
+  } catch (err) {
+    return res.status(400).send({
+      message: `invalid request: ${err.message}`,
+    });
+  }
 });
 
 app.listen(3000, () => console.log(`server started on port ${port}`));
