@@ -20,9 +20,12 @@ var blogs = [
   { id: 4, title: 'Blog post 4', content: 'Example blog post 4.' },
 ];
 
+// Convert a string ID to int
+const toInt = (id) => parseInt(id, 10);
+
 // Find a single blog by ID
 function blogsFindById(blogId) {
-  blogId = parseInt(blogId, 10); // convert to int
+  blogId = toInt(blogId);
   return blogs.find((x) => x.id === blogId);
 }
 
@@ -49,12 +52,19 @@ function addBlog({ title, content }) {
 
 // Update a single blog by ID
 function blogsUpdateById(updatedBlog) {
-  const { id } = updatedBlog;
-  const idx = blogs.findIndex((x) => x.id === id);
-  if (idx == -1) {
+  const id = toInt(updatedBlog.id);
+  const exists = blogs.find((x) => x.id === id);
+  if (!exists) {
     throw new Error(`blog with id ${id} not found`);
   }
-  blogs[idx] = updatedBlog;
+  const filtered = blogs.filter((x) => x.id !== id); // filter array to remove this blog
+  blogs = { ...filtered, updatedBlog }.sort((a, b) => a.id - b.id); // Add the updated blog and sort by id
+}
+
+// Delete a single blog from the array by id
+function deleteBlog(blogId) {
+  blogId = toInt(blogId);
+  blogs = blogs.filter((x) => x.id !== blogId); // filter by ID and replace the blogs array
 }
 
 // Index route
@@ -98,7 +108,7 @@ app.post('/blogs', (req, res) => {
 
 // GET blog -- single
 app.get('/blogs/:id', (req, res) => {
-  const { id } = req.params;
+  const id = toInt(req.params.id);
   const blog = blogsFindById(id);
   if (!blog) {
     return res.status(404).json({ error: 'blog not found' });
@@ -109,17 +119,32 @@ app.get('/blogs/:id', (req, res) => {
 // UPDATE blog -- single
 app.put('/blogs/:id', (req, res) => {
   try {
-    const id = parseInt(req.params.id, 10);
+    const id = toInt(req.params.id);
     const { title, content } = req.body;
     // Validate content
     if (!title || !content) {
       throw new Error('title or content is empty');
     }
     const existing = blogsFindById(id) || {}; // find existing or create new
-    const updated = { ...existing, id, title, content };
+    const updated = { ...existing, id, title, content }; // update the values of the object with the new content
     blogsUpdateById(updated);
     console.log(`updated blog: ${updated}`);
     res.status(200).json(updated);
+  } catch (err) {
+    return res.status(400).json({
+      error: err.toString(),
+    });
+  }
+});
+
+// DELETE blog -- single
+app.delete('/blogs/:id', (req, res) => {
+  try {
+    const id = toInt(req.params.id);
+    const blog = blogsFindById(id);
+    deleteBlog(id);
+    console.log(`deleted blog: ${id}`);
+    res.status(200).json(blog || {}); // return the deleted blog JSON if there was a record
   } catch (err) {
     return res.status(400).json({
       error: err.toString(),
