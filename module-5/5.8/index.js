@@ -12,7 +12,10 @@ import {
 } from './blogs.js';
 
 const app = express();
-const port = 3000;
+// const port = 3000;
+import { PORT } from './config.js';
+console.log(`=== debug: PORT: ${PORT}`);
+
 app.use(cors());
 
 // Configure body parser middleware
@@ -106,4 +109,4 @@ app.delete('/blogs/:id', (req, res) => {
   }
 });
 
-app.listen(3000, () => console.log(`server started on port ${port}`));
+app.listen(3000, () => console.log(`server started on port ${PORT}`));
