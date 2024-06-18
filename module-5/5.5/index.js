@@ -61,7 +61,7 @@ app.get('/blogs/:id', (req, res) => {
   const { id } = req.params;
   const blog = blogsFindById(id);
   if (!blog) {
-    return res.status(404).send({ message: 'blog not found' });
+    return res.status(404).json({ error: 'blog not found' });
   }
   res.status(200).json(blog);
 });
@@ -78,7 +78,7 @@ app.post('/blogs', (req, res) => {
     addBlog(blog);
     console.log(`posted blog: ${blog}`);
   } catch (err) {
-    return res.status(400).send({
+    return res.status(400).json({
       message: `invalid request: ${err.message}`,
     });
   }
