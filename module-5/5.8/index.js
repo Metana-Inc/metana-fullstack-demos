@@ -12,7 +12,6 @@ import {
 } from './blogs.js';
 
 const app = express();
-// const port = 3000;
 import { PORT } from './config.js';
 console.log(`=== debug: PORT: ${PORT}`);
 
@@ -109,4 +108,4 @@ app.delete('/blogs/:id', (req, res) => {
   }
 });
 
-app.listen(3000, () => console.log(`server started on port ${PORT}`));
+app.listen(PORT, () => console.log(`server started on port ${PORT}`));

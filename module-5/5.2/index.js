@@ -4,7 +4,7 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 
 const app = express();
-const port = 3000;
+const PORT = 3000;
 
 app.use(cors());
 
@@ -17,4 +17,4 @@ app.get('/', (req, res) => {
   res.send('Hello world!');
 });
 
-app.listen(3000, () => console.log(`server started on port ${port}`));
+app.listen(PORT, () => console.log(`server started on port ${PORT}`));
