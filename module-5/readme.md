@@ -12,23 +12,23 @@ Basic Express backend REST application, with Mongo DB backend.
 6. Start your server: `npm start`
 7. Use Postman or curl to test your API route.
 
-## Phases
+## Sections
 
-1. Initialize Express app
-2. Add bodyParser and cors
-3. Add GET ALL blogs route
-4. Add GET blog, POST blog route
-5. Add blog data methods, convert project to ES6 modules
-6. Add UPDATE blog route
-7. Break out blogs data functions
-8. Add Nodemon, dotenv
-9. Move /blogs to new router
-10. Add /users routes
+- 5.1 - Initialize Express app
+- 5.2 - Add bodyParser and cors
+- 5.3 - Add GET ALL blogs route
+- 5.4 - Add GET blog, POST blog route
+- 5.5 - Add blog data methods, convert project to ES6 modules
+- 5.6 - Add UPDATE blog route
+- 5.7 - Break out blogs data functions
+- 5.8 - Add Nodemon, dotenv
+- 5.9 - Move /blogs to new router
+- 5.10 - Add /users routes
 
 ## Todo
 
-- add logging middleware - Morgan
-- Add mongo backend in index.js add to env settings
-- add schemas for users and blogs
-- break out mongo to a separate /db/dbconn.js file
-- add seedDb.js script for users and blogs in /scripts
+- 5.x - add logging middleware - Morgan
+- 5.x - Add mongo backend in index.js, add db connection credentials to example.env
+- 5.x - add schemas for users and blogs
+- 5.x - break out mongo to a separate /db/dbconn.js file
+- 5.x - add seedDb.js script for users and blogs in /scripts
