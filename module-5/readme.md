@@ -2,7 +2,7 @@
 
 Basic Express backend REST application, with Mongo DB backend.
 
-## Steps to set up:
+## Setup:
 
 1. Initialize project
 2. Install express
@@ -12,7 +12,7 @@ Basic Express backend REST application, with Mongo DB backend.
 6. Start your server: `npm start`
 7. Use Postman or curl to test your API route.
 
-## Subtasks
+## Phases
 
 1. Initialize Express app
 2. Add bodyParser and cors
@@ -23,4 +23,10 @@ Basic Express backend REST application, with Mongo DB backend.
 7. Break out blogs data functions
 8. Add Nodemon, dotenv
 9. Move /blogs to new router
-10.
+10. Add /users routes
+
+## Todo
+
+- Add mongo backend, add to env settings
+- add schemas for users and blogs
+-
