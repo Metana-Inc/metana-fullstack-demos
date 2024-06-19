@@ -1,37 +1,22 @@
-// Demo Express REST API with Mongo backend
-// const express = require('express');
-import express from 'express';
-import bodyParser from 'body-parser';
-import cors from 'cors';
+// Routes for the Blogs API
+const blogsRouter = express.Router();
 import {
   blogs,
   addBlog,
   deleteBlog,
   updateBlog,
   blogsFindById,
-} from './blogs.js';
+} from '../data/blogs.js';
 
-const app = express();
-import { PORT } from './config.js';
+// All these routes will be scoped under /api/blog in index.js
 
-app.use(cors());
-
-// Configure body parser middleware
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
-
-// Index route
-app.get('/', (req, res) => {
-  res.send('Hello from index page');
-});
-
-// GET blogs -- all
-app.get('/blogs', (req, res) => {
+// Get all blogs
+blogsRouter.get('/', (req, res) => {
   res.json(blogs);
 });
 
-// GET blog -- single
-app.get('/blogs/:id', (req, res) => {
+// Get single blog
+blogsRouter.get('/:id', (req, res) => {
   const { id } = req.params;
   const blog = blogsFindById(id);
   if (!blog) {
@@ -40,8 +25,8 @@ app.get('/blogs/:id', (req, res) => {
   res.status(200).json(blog);
 });
 
-// POST blog
-app.post('/blogs', (req, res) => {
+// Post new blog
+blogsRouter.post('/', (req, res) => {
   try {
     const { title, content } = req.body;
     // Validate content
@@ -58,8 +43,8 @@ app.post('/blogs', (req, res) => {
   res.json(blogs);
 });
 
-// GET blog -- single
-app.get('/blogs/:id', (req, res) => {
+// Get single blog
+blogsRouter.get('/:id', (req, res) => {
   const { id } = req.params;
   const blog = blogsFindById(id);
   if (!blog) {
@@ -68,8 +53,8 @@ app.get('/blogs/:id', (req, res) => {
   res.status(200).json(blog);
 });
 
-// UPDATE blog -- single
-app.put('/blogs/:id', (req, res) => {
+// Update single blog
+blogsRouter.put('/:id', (req, res) => {
   try {
     const { id } = req.params;
     const { title, content } = req.body;
@@ -92,8 +77,8 @@ app.put('/blogs/:id', (req, res) => {
   }
 });
 
-// DELETE blog -- single
-app.delete('/blogs/:id', (req, res) => {
+// Delete single blog
+blogsRouter.delete('/:id', (req, res) => {
   try {
     const { id } = req.params;
     const blog = blogsFindById(id);
@@ -107,4 +92,4 @@ app.delete('/blogs/:id', (req, res) => {
   }
 });
 
-app.listen(PORT, () => console.log(`server started on port ${PORT}`));
+export default blogsRouter;
