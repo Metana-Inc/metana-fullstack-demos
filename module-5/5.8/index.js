@@ -49,7 +49,7 @@ app.post('/blogs', (req, res) => {
       throw new Error('title or content is empty');
     }
     const blog = addBlog({ title, content });
-    console.log(`posted blog: ${blog}`);
+    console.log('posted blog: ', blog);
   } catch (err) {
     return res.status(400).json({
       error: err.toString(),

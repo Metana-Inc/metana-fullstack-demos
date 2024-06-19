@@ -76,7 +76,7 @@ app.post('/blogs', (req, res) => {
     }
     const blog = newBlog({ title, content });
     addBlog(blog);
-    console.log(`posted blog: ${blog}`);
+    console.log('posted blog: ', blog);
   } catch (err) {
     return res.status(400).json({
       message: `invalid request: ${err.message}`,

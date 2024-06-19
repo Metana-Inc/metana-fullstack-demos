@@ -1,5 +1,4 @@
 // Demo Express REST API with Mongo backend
-// const express = require('express');
 import express from 'express';
 import bodyParser from 'body-parser';
 import cors from 'cors';
