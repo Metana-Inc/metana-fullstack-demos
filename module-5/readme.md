@@ -11,3 +11,16 @@ Basic Express backend REST application, with Mongo DB backend.
 5. Add a "start" script to package.json
 6. Start your server: `npm start`
 7. Use Postman or curl to test your API route.
+
+## Subtasks
+
+1. Initialize Express app
+2. Add bodyParser and cors
+3. Add GET ALL blogs route
+4. Add GET blog, POST blog route
+5. Add blog data methods
+6. Add UPDATE blog route
+7. Break out blogs data functions
+8. Add Nodemon, dotenv
+9. Move /blogs to new router
+10.
