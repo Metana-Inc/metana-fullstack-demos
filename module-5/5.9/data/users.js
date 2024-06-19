@@ -1,4 +1,5 @@
 // Dummy users data
+const VALID_ROLES = ['admin', 'normal'];
 export var users = [
   {
     id: 1,
@@ -32,6 +33,8 @@ export var users = [
   },
 ];
 
+export const isValidRole = (role) => VALID_ROLES.includes(role);
+
 function sortById(arr) {
   return arr.sort((a, b) => a.id - b.id);
 }
@@ -40,17 +43,39 @@ export function getUsers() {
   return users;
 }
 
+const userExists = (user) => {
+  const id = parseInt(user.id, 10);
+  return users.find((user) => user.id === id);
+};
+
 export function deleteUser(user) {
   const id = parseInt(user.id, 10);
+  if (!userExists(user)) {
+    return false;
+  }
   users = users.filter((user) => user.id !== id);
+  return user;
 }
 
 export function updateUser(user) {
   const id = parseInt(user.id, 10);
+
   const origUser = users.find((x) => x.id === id) || {};
-  const updated = { ...origUser, ...user }; // merge old and new users array
-  const filtered = users.filter((x) => x.id !== id);
+
+  // Remove empty values from updated user object so we don't overwrite existing values with blanks
+  const fields = ['name', 'email', 'role'];
+  for (const field of fields) {
+    if (!user[field]) {
+      delete user[field];
+    }
+  }
+  const filtered = users.filter((x) => x.id !== id); // Remove the original user from the array
+
+  // merge old and new users objects
+  const updated = { ...origUser, ...user };
+
   users = sortById([...filtered, updated]); // add updated user to array and sort by ID
+  return updated;
 }
 
 export function getUserById(id) {
@@ -62,6 +87,14 @@ export function getUserByEmail(email) {
   return users.find((x) => x.email === email);
 }
 
-export function addUser(user) {
+export function addUser({ name, email, role = 'normal' }) {
+  const user = { name, email, role };
+  if (!name || !email) {
+    throw new Error('user name and email required');
+  }
+  if (!isValidRole(role)) {
+    throw new Error('invalid role');
+  }
   users = sortById([...users, user]);
+  return user;
 }
