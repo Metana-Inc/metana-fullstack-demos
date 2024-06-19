@@ -28,7 +28,7 @@ Basic Express backend REST application, with Mongo DB backend.
 ## Todo
 
 - 5.x - add logging middleware - Morgan
-- 5.x - Add mongo backend in index.js, add db connection credentials to example.env
+- 5.x - Add mongo backend in index.js, add placeholder db connection credentials to example.env
 - 5.x - add schemas for users and blogs
 - 5.x - break out mongo to a separate /db/dbconn.js file
 - 5.x - add seedDb.js script for users and blogs in /scripts
