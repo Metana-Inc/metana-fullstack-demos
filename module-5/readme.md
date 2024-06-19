@@ -18,7 +18,7 @@ Basic Express backend REST application, with Mongo DB backend.
 2. Add bodyParser and cors
 3. Add GET ALL blogs route
 4. Add GET blog, POST blog route
-5. Add blog data methods
+5. Add blog data methods, convert project to ES6 modules
 6. Add UPDATE blog route
 7. Break out blogs data functions
 8. Add Nodemon, dotenv
