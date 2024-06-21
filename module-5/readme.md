@@ -26,6 +26,7 @@ Basic Express backend REST application, with Mongo DB backend.
 - 5.10 - Add /users routes
 - 5.11 - Add logging middleware (Morgan)
 - 5.12 - Add MongoDB backend in index.js, add placeholder DB connection credentials to example.env
+- 5.13 - Add schemas for users and blogs
 
 ## Todo
 
