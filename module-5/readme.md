@@ -28,8 +28,9 @@ Basic Express backend REST application, with Mongo DB backend.
 - 5.12 - Add MongoDB backend in index.js, add placeholder DB connection credentials to example.env
 - 5.13 - Add schemas for users and blogs
 - 5.14 - Break out mongo to a separate /db/dbconn.js file
+- 5.15 - Add seedDb.js script for users and blogs in /scripts
 
 ## Todo
 
 
-- 5.x - add seedDb.js script for users and blogs in /scripts
+
