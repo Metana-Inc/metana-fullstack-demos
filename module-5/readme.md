@@ -24,11 +24,10 @@ Basic Express backend REST application, with Mongo DB backend.
 - 5.8 - Add Nodemon, dotenv
 - 5.9 - Move /blogs to new router
 - 5.10 - Add /users routes
+- 5.11 - Add logging middleware with Morgan
+- 5.12 - Add MongoDB connection
+- 5.13 - Add User and Blog models
+- 5.14 - Break out dbconn to file
+- 5.15 - Add seedDb script
 
 ## Todo
-
-- 5.x - add logging middleware - Morgan
-- 5.x - Add mongo backend in index.js, add placeholder db connection credentials to example.env
-- 5.x - add schemas for users and blogs
-- 5.x - break out mongo to a separate /db/dbconn.js file
-- 5.x - add seedDb.js script for users and blogs in /scripts

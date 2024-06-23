@@ -1,35 +1,35 @@
 // Dummy users data
-const VALID_ROLES = ['admin', 'normal'];
+const VALID_ROLES = ["admin", "normal"];
 export var users = [
   {
     id: 1,
-    name: 'Example User 1',
-    email: 'example-1@example.com',
-    role: 'admin',
+    name: "Example User 1",
+    email: "example-1@example.com",
+    role: "admin",
   },
   {
     id: 2,
-    name: 'Example User 2',
-    email: 'example-2@example.com',
-    role: 'normal',
+    name: "Example User 2",
+    email: "example-2@example.com",
+    role: "normal",
   },
   {
     id: 3,
-    name: 'Example User 3',
-    email: 'example-3@example.com',
-    role: 'normal',
+    name: "Example User 3",
+    email: "example-3@example.com",
+    role: "normal",
   },
   {
     id: 4,
-    name: 'Example User 4',
-    email: 'example-4@example.com',
-    role: 'normal',
+    name: "Example User 4",
+    email: "example-4@example.com",
+    role: "normal",
   },
   {
     id: 5,
-    name: 'Example User 5',
-    email: 'example-5@example.com',
-    role: 'normal',
+    name: "Example User 5",
+    email: "example-5@example.com",
+    role: "normal",
   },
 ];
 
@@ -63,7 +63,7 @@ export function updateUser(user) {
   const origUser = users.find((x) => x.id === id) || {};
 
   // Remove empty values from updated user object so we don't overwrite existing values with blanks
-  const fields = ['name', 'email', 'role'];
+  const fields = ["name", "email", "role"];
   for (const field of fields) {
     if (!user[field]) {
       delete user[field];
@@ -91,14 +91,14 @@ export function getUserByEmail(email) {
 const usersMaxId = (id) => Math.max(...users.map((b) => b.id));
 
 // Add a new entry to users array
-export function addUser({ id, name, email, role = 'normal' }) {
+export function addUser({ id, name, email, role = "normal" }) {
   const userId = id || (usersMaxId() || 0) + 1;
   const user = { id: userId, name, email, role };
   if (!name || !email) {
-    throw new Error('user name and email required');
+    throw new Error("user name and email required");
   }
   if (!isValidRole(role)) {
-    throw new Error('invalid role');
+    throw new Error("invalid role");
   }
   users = sortById([...users, user]);
   return user;
