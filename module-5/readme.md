@@ -28,6 +28,5 @@ Basic Express backend REST application, with Mongo DB backend.
 - 5.12 - Add MongoDB connection
 - 5.13 - Add User and Blog models
 - 5.14 - Break out dbconn to file
-- 5.15 - Add seedDb script
-
-## Todo
+- 5.15 - Implementing the Mongo connections to api endpoints
+- 5.16 - Add seedDb script
