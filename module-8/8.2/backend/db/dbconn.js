@@ -6,6 +6,7 @@ dotenv.config();
 
 export async function connectToDatabase() {
   try {
+    console.log('connecting to mongo database...');
     await mongoose.connect(`${MONGO_URI}/${MONGO_DB_NAME}`, {
       writeConcern: {
         w: 'majority', // Use 'majority' for default write concern
