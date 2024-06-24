@@ -24,3 +24,4 @@ Replace MongoDB with PostgreSQL in your app.
 
 ## Sections
 - 6.1 - Update the dbconn.js file with PostgreSQL connection.
+- 6.2 - Update seedDb script to seed the PostgreSQL db.

@@ -1,9 +1,9 @@
 import pg from 'pg';
-import { POSTGRES_URL, POSTGRES_SSL } from '../config.js';
+import 'dotenv/config';
 
 const db = new pg.Pool({
-  connectionString: POSTGRES_URL,
-  ssl: POSTGRES_SSL ? { rejectUnauthorized: false } : false,
+  connectionString:
+    'postgresql://postgres:Minion22740@localhost:5432/metana-demo?schema=public',
 });
 
 // Test the connection
