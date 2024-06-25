@@ -6,6 +6,7 @@
   "scripts": {
     "start": "nodemon ./index.js",
     "start:frontend": "node serveClient.js",
+    "build:frontend": "cd ../client && npm run build",
     "test": "echo \"Error: no test specified\" && exit 1",
     "seed": "node scripts/seedDb.js"
   },

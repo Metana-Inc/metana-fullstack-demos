@@ -4,7 +4,8 @@ import path from 'path';
 const app = express();
 import { FRONTEND_PORT } from './config.js';
 
-const buildPath = path.resolve(path.join('..', 'build'));
+const buildPath = path.resolve(path.join('..', 'dist'));
+// TODO: ensure this path exists
 
 app.use(express.static(buildPath));
 
