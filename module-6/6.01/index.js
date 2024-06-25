@@ -6,7 +6,8 @@ import cors from 'cors';
 // Import morgan for logging
 import morgan from 'morgan';
 
-import { connectToDatabase } from './db/dbconn.js';
+// Import the PostgreSQL database connection
+import db from './db/dbconn.js'; // do something with this
 
 const app = express();
 import { PORT } from './config.js';
@@ -21,9 +22,6 @@ app.use(bodyParser.json());
 
 // Configure morgan (combined, common, dev, short, tiny)
 app.use(morgan('combined'));
-
-// Connect to MongoDB
-connectToDatabase();
 
 // blog routes
 app.use('/blogs', blogsRouter);
