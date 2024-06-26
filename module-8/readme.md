@@ -18,12 +18,14 @@ Building a React frontend for our API backend.
 - 8.4
   - added proxy to backend API from client
   - installed concurrently (as dev dependency)
+  - added 'dev' script with `concurrently` to package.json
 
 **Todos:**
 
 - [ ] Remove react demo icon / landing page
-- [ ] Add concurrently for dev server
-- [ ] Add /api proxy
+- [x] Add concurrently for dev server
+- [x] Add /api proxy
+- [ ] Add proper proxy middleware -- see create-react-app docs
 - [ ] Add /pages directory
 - [ ] Add page: Home
 - [ ] Add page: blogs index
