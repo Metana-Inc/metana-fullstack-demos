@@ -11,8 +11,6 @@ if (!fs.existsSync(buildPath)) {
     'build directory "/dist" does not exist: run npm build:client before starting server'
   );
 }
-// TODO: ensure this path exists
-
 app.use(express.static(buildPath));
 
 app.get('/', function (req, res) {
