@@ -15,6 +15,9 @@ Building a React frontend for our API backend.
 - 8.1 - Copy REST API backend to /server
 - 8.2 - Initialize Node project in /client and create React app
 - 8.3 - Add scripts and test running frontend from production build
+- 8.4
+  - added proxy to backend API from client
+  - installed concurrently (as dev dependency)
 
 **Todos:**
 
