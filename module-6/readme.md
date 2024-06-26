@@ -30,5 +30,7 @@ Replace MongoDB with PostgreSQL in your app.
 - 6.04 - In the scripts directory write a Node.js script to execute the setup-db.sql file, named initDb.js. Add `db:init` command in package.json.
 - 6.05 - Create a seedDb.js script to seed the PostgreSQL db. Add `db:seed` command in package.json.
 - 6.06 - Update endpoints to handle CRUD operations with PostgreSQL.
+- 6.07 - Ensure that the server successfully connects to the PostgreSQL database before it starts listening for requests by calling db.connect() in an asynchronous function. Update the index.js.
+- 6.08 - Handle graceful shutdown to close the database connection when the server is stopped.
 
 
