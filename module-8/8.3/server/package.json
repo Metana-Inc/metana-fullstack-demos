@@ -1,11 +1,12 @@
 {
   "name": "metana-express-rest-api",
   "version": "1.0.0",
-  "description": "Demo of a REST API written in Node with Express.js and MongoDB as database backend",
+  "description": "Demo of a Fullstack React application with a REST API backend, written in Node with Express.js, and MongoDB as database backend",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon ./index.js",
-    "start:frontend": "node serveClient.js",
+    "start": "npm run start:backend",
+    "start:backend": "nodemon ./index.js",
+    "start:frontend": "nodemon serveClient.js",
     "build:frontend": "cd ../client && npm run build",
     "test": "echo \"Error: no test specified\" && exit 1",
     "seed": "node scripts/seedDb.js"

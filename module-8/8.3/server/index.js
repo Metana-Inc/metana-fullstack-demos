@@ -36,4 +36,4 @@ app.get('/', (req, res) => {
   res.send('Hello from index page');
 });
 
-app.listen(PORT, () => console.log(`server started on port ${PORT}`));
+app.listen(PORT, () => console.log(`backend server started on port ${PORT}`));
