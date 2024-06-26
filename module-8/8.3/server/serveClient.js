@@ -1,10 +1,16 @@
 // Serve the prebuilt frontend React client
 import express from 'express';
 import path from 'path';
+import fs from 'fs';
 const app = express();
 import { FRONTEND_PORT } from './config.js';
 
 const buildPath = path.resolve(path.join('..', 'dist'));
+if (!fs.existsSync(buildPath)) {
+  console.error(
+    'build directory "/dist" does not exist: run npm build:client before starting server'
+  );
+}
 // TODO: ensure this path exists
 
 app.use(express.static(buildPath));
