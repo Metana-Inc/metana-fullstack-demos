@@ -26,7 +26,7 @@ Building a React frontend for our API backend.
 - [x] Add concurrently for dev server
 - [x] Add /api proxy
 - [ ] Add proper proxy middleware -- see create-react-app docs
-- [ ] Add /pages directory
+- [x] Add /pages directory
 - [ ] Add page: Home
 - [ ] Add page: blogs index
 - [ ] Add page: blog single
