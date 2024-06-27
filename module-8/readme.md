@@ -31,13 +31,14 @@ Building a React frontend for our API backend.
   - add routes to App.js
   - Add Links to Navigation.js
   - Import Navigation to Home and test all links
+  - Add styles to Navigation.js
 
 - [x] Remove react demo icon / landing page
 - [x] Add concurrently for dev server
 - [x] Add /api proxy
 - [ ] Add proper proxy middleware -- see create-react-app docs
 - [x] Add /pages directory
-- [ ] Add React router
+- [x] Add React router
 - [x] Add placeholder pages
 - [ ] Add page: Home
 - [ ] Add page: blogs index
@@ -52,7 +53,7 @@ Building a React frontend for our API backend.
 - [ ] Implement data for /blogs, /users in frontend
 - [ ] Break out router for blogs, index
 - [ ] Add layout
-- [ ] Add component: Navigation bar
+- [x] Add component: Navigation bar
 - [ ] Add component: Footer
 - [ ] Add component: Contact form
 - [ ] Add component: User bio
