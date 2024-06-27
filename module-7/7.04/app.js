@@ -1,6 +1,7 @@
-const express = require('express');
+import express from 'express';
 const app = express();
-const path = require('path');
+import path from 'path';
+import 'tailwindcss/tailwind.css';
 
 // Set static folder
 app.use(express.static(path.join(__dirname, 'public')));
