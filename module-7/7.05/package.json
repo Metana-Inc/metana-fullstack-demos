@@ -1,10 +1,11 @@
 {
-  "name": "7.01",
+  "name": "7.02",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build:css": "npx tailwindcss -i ./public/styles.css -o ./src/output.css --watch",
+    "start": "node app.js"
   },
   "type": "module",
   "keywords": [],
@@ -12,5 +13,8 @@
   "license": "ISC",
   "dependencies": {
     "express": "^4.19.2"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.4.4"
   }
 }
