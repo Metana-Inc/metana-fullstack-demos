@@ -554,11 +554,7 @@ video {
   --tw-contain-style:  ;
 }
 
-.bg-black {
+.bg-blue-600 {
   --tw-bg-opacity: 1;
-  background-color: rgb(0 0 0 / var(--tw-bg-opacity));
-}
-
-.font-bold {
-  font-weight: 700;
+  background-color: rgb(37 99 235 / var(--tw-bg-opacity));
 }
