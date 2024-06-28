@@ -2,7 +2,7 @@
 
 Basic Express backend REST application, with Mongo DB backend.
 
-## Setup:
+## Setup
 
 1. Initialize project
 2. Install express
