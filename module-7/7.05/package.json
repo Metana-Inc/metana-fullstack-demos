@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build:css": "npx tailwindcss -i ./public/styles.css -o ./src/output.css --watch",
+    "build:css": "npx tailwindcss -i ./src/entrypoint.css -o ./public/css/tailwind.css --watch",
     "start": "node app.js"
   },
   "type": "module",
