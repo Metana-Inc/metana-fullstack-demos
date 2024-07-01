@@ -1,7 +1,7 @@
 #navigation {
   top: 0;
   height: 42px;
-  margin: aut;
+  margin: 0;
   display: flex;
   justify-content: flex-end;
 }
@@ -14,6 +14,7 @@
   text-decoration: none;
   border-bottom: #11c453 1px solid;
 }
+
 .nav-item:hover {
   background-color: #11c453;
   color: white;

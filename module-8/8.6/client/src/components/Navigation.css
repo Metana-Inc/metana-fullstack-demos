@@ -1,7 +1,7 @@
 #navigation {
   top: 0;
   height: 42px;
-  margin: aut;
+  margin: 0;
   display: flex;
   justify-content: flex-end;
 }

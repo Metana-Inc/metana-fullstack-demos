@@ -6,13 +6,13 @@ import Footer from '../components/Footer';
 
 function Layout() {
   return (
-    <div>
+    <>
       <Navigation />
       <main id="content">
         <Outlet />
       </main>
       <Footer />
-    </div>
+    </>
   );
 }
 
