@@ -31,9 +31,4 @@ app.use('/blogs', blogsRouter);
 // user routes
 app.use('/users', usersRouter);
 
-// Index route
-app.get('/', (req, res) => {
-  res.send('Hello from index page');
-});
-
 app.listen(PORT, () => console.log(`backend server started on port ${PORT}`));
