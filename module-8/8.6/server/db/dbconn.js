@@ -1,17 +1,11 @@
 import mongoose from 'mongoose';
-import dotenv from 'dotenv';
-import { MONGO_URI, MONGO_DB_NAME } from '../config.js';
-
-dotenv.config();
+import { MONGO_URI } from '../config.js';
 
 export async function connectToDatabase() {
   try {
     console.log('connecting to mongo database...');
-    await mongoose.connect(`${MONGO_URI}/${MONGO_DB_NAME}`, {
-      writeConcern: {
-        w: 'majority', // Use 'majority' for default write concern
-      },
-    });
+    console.log(`=== debug: MONGO_URI: ${MONGO_URI}`);
+    await mongoose.connect(MONGO_URI);
     console.log('MongoDB connected');
   } catch (err) {
     console.error('MongoDB connection error:', err);

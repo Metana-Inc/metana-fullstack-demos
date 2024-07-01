@@ -23,7 +23,7 @@ app.use(bodyParser.json());
 app.use(morgan('combined'));
 
 // Connect to MongoDB
-connectToDatabase();
+await connectToDatabase();
 
 // blog routes
 app.use('/blogs', blogsRouter);
