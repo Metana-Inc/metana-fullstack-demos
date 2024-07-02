@@ -1,5 +1,25 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
+import './Blogs.css';
+
+// If a text string content is over 50 characters, shorten it and add a '...'.
+const shortenContent = (content) => {
+  if (content.length > 50) {
+    return content.substring(0, 50) + '...';
+  }
+  return content;
+};
+
+// A single item in the blogs list
+function BlogItem({ blog }) {
+  const preview = shortenContent(blog.content); // Short preview of the blog content
+  return (
+    <li key={`blog-${blog._id}`} className="blog-item">
+      <span>{blog.title}</span>
+      <span>{preview}</span>
+    </li>
+  );
+}
 
 function Blogs() {
   const [blogs, setBlogs] = useState([]);
@@ -12,7 +32,7 @@ function Blogs() {
         console.log('=== debug: data returned: ', result.data);
         setBlogs(result.data);
       } else {
-        console.log('fetch data error: ' + result.status);
+        console.error('fetch data error: ' + result.status);
       }
     }
     getBlogs();
@@ -23,11 +43,11 @@ function Blogs() {
       <h2>Blogs</h2>
       <p>This is the Blogs page</p>
       {blogs.length ? (
-        <div className="all-blogs">
+        <div id="all-blogs">
           <h3>All blogs:</h3>
-          <ul>
+          <ul className="blogs-list">
             {blogs.map((b) => (
-              <li key={`blog-${b._id}`}>{b.title}</li>
+              <BlogItem blog={b} />
             ))}
           </ul>
         </div>
