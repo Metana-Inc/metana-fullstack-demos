@@ -8,7 +8,6 @@ function Contact() {
       <h2>Contact</h2>
 
       <div>
-        <h3>About me</h3>
         <p>
           Condimentum id auctor quis, ultricies in turpis. Vestibulum suscipit
           commodo ante quis tincidunt. Cras posuere fringilla lectus, ac posuere
@@ -22,9 +21,8 @@ function Contact() {
 
         <div className="contact-methods">
           <p>
-            <label>Email</label>{' '}
             <span className="contact-method-item">
-              <a href={`mailto:${email}`}>{email}</a>
+              <a href={`mailto:${email}`}>Email</a>
             </span>
           </p>
           <p>
