@@ -1,9 +1,4 @@
 /* Footer */
-:root {
-  --footer-color: rgb(206, 206, 206);
-  --footer-text: #4f4f4f;
-  --footer-links: #4f4f4f;
-}
 footer {
   position: absolute;
   bottom: 0;
@@ -13,6 +8,7 @@ footer {
   height: 40px;
   display: flex;
   align-items: center;
+  font-size: small;
 }
 footer a,
 footer a:visited,

@@ -3,8 +3,6 @@ import { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import axios from 'axios';
 
-import './BlogItem.css';
-
 function BlogItem() {
   const { id } = useParams();
   const [blog, setBlog] = useState(null);
@@ -24,7 +22,7 @@ function BlogItem() {
   return (
     <div className="blog-post">
       <Link to="/blogs" className="backlink">
-        &#x261C; back to all blogs
+        &#8592; back to all blogs
       </Link>
       {blog ? (
         <div>
