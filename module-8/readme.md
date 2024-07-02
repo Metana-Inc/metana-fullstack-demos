@@ -35,12 +35,19 @@ Building a React frontend for our API backend.
 
 - 8.6 - Add page layout wrapper
 
+  - add a Layout.js file
+  - wrap all views in layout
+  - include navigation bar and footer in layout
+
 - 8.7 - Add API backend
 
   - add axios library
   - add http-proxy-middleware
   - change backend route urls to /api prefix
   - setup proxy middleware to backend API server and port
+  - load blogs data from API in /blogs view
+
+- 8.8 - Add Blog item view
 
 ## Todos
 
@@ -74,7 +81,7 @@ Projects section
 
 Blogs section
 
-- [ ] Add page: blogs index
+- [x] Add page: blogs index
 - [ ] Add page: blog single
 
 Styling
