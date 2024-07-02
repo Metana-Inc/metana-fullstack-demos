@@ -26,9 +26,9 @@ app.use(morgan('combined'));
 await connectToDatabase();
 
 // blog routes
-app.use('/blogs', blogsRouter);
+app.use('/api/blogs', blogsRouter);
 
 // user routes
-app.use('/users', usersRouter);
+app.use('/api/users', usersRouter);
 
 app.listen(PORT, () => console.log(`backend server started on port ${PORT}`));
