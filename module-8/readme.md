@@ -33,27 +33,51 @@ Building a React frontend for our API backend.
   - Import Navigation to Home and test all links
   - Add styles to Navigation.js
 
-- [x] Remove react demo icon / landing page
-- [x] Add concurrently for dev server
-- [x] Add /api proxy
-- [ ] Add proper proxy middleware -- see create-react-app docs
-- [x] Add /pages directory
-- [x] Add React router
-- [x] Add placeholder pages
-- [ ] Add page: Home
-- [ ] Add page: blogs index
-- [ ] Add page: blog single
+- 8.6 - Add page layout wrapper
+
+- 8.7 - Add API backend
+
+  - add axios library
+  - add http-proxy-middleware
+  - change backend route urls to /api prefix
+  - setup proxy middleware to backend API server and port
+
+## Todos
+
+Pages
+
 - [ ] Add page: about
 - [ ] Add page: contact
-- [ ] Add page: projects index
-- [ ] Add page: project single
-- [ ] Add root route: https://reactrouter.com/en/main/start/tutorial
 - [ ] Add 404 page
+
+Server
+
+- [x] Break out router for blogs,
+- [x] Add layout
+
+API
+
 - [ ] Get data from API backend
 - [ ] Implement data for /blogs, /users in frontend
-- [ ] Break out router for blogs, index
-- [ ] Add layout
+
+Components
+
 - [x] Add component: Navigation bar
-- [ ] Add component: Footer
+- [x] Add component: Footer
 - [ ] Add component: Contact form
 - [ ] Add component: User bio
+
+Projects section
+
+- [ ] Add page: projects index
+- [ ] Add page: project single
+
+Blogs section
+
+- [ ] Add page: blogs index
+- [ ] Add page: blog single
+
+Styling
+
+- [ ] install TailwindCSS
+- [ ] include tailwind in project build
