@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 import './Blogs.css';
 
@@ -12,10 +13,13 @@ const shortenContent = (content) => {
 
 // A single item in the blogs list
 function BlogItem({ blog }) {
+  const blogId = blog._id;
   const preview = shortenContent(blog.content); // Short preview of the blog content
   return (
-    <li key={`blog-${blog._id}`} className="blog-item">
-      <span>{blog.title}</span>
+    <li key={`blog-${blogId}`} className="blog-item">
+      <Link to={`/blogs/${blogId}`}>
+        <span>{blog.title}</span>
+      </Link>
       <span>{preview}</span>
     </li>
   );

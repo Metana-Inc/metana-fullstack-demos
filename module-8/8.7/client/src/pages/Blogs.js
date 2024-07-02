@@ -12,7 +12,7 @@ function Blogs() {
         console.log('=== debug: data returned: ', result.data);
         setBlogs(result.data);
       } else {
-        console.log('fetch data error: ' + result.status);
+        console.error('fetch data error: ' + result.status);
       }
     }
     getBlogs();
