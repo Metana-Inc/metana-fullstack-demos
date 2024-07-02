@@ -1,0 +1,7 @@
+/* Styles for blog item view */
+a.backlink,
+a.backlink:visited,
+a.backlink:hover,
+a.backlink:active {
+  color: #000;
+}
