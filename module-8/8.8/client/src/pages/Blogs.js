@@ -26,12 +26,14 @@ function BlogItem({ blog }) {
 }
 
 function Blogs() {
+  const [isLoading, setIsLoading] = useState(true);
   const [blogs, setBlogs] = useState([]);
 
   useEffect(() => {
     console.log('=== debug: fetching blogs data...');
     async function getBlogs() {
       const result = await axios.get('/api/blogs');
+      setIsLoading(false);
       if (result && result.status === 200) {
         console.log('=== debug: data returned: ', result.data);
         setBlogs(result.data);
@@ -46,7 +48,9 @@ function Blogs() {
     <div>
       <h2>Blogs</h2>
       <p>This is the Blogs page</p>
-      {blogs.length ? (
+      {isLoading ? (
+        <p>loading</p>
+      ) : blogs.length ? (
         <div id="all-blogs">
           <h3>All blogs:</h3>
           <ul className="blogs-list">
