@@ -25,6 +25,26 @@ function BlogItem({ blog }) {
   );
 }
 
+// List of all the blogs
+function BlogsList({ data, isLoading }) {
+  if (isLoading) {
+    return <p>loading</p>;
+  }
+  if (!data?.length) {
+    return <p> No blogs data </p>;
+  }
+  return (
+    <div id="all-blogs">
+      <h3>All blogs:</h3>
+      <ul className="blogs-list">
+        {blogs.map((b) => (
+          <BlogItem blog={b} />
+        ))}
+      </ul>
+    </div>
+  );
+}
+
 function Blogs() {
   const [isLoading, setIsLoading] = useState(true);
   const [blogs, setBlogs] = useState([]);
@@ -48,20 +68,7 @@ function Blogs() {
     <div>
       <h2>Blogs</h2>
       <p>This is the Blogs page</p>
-      {isLoading ? (
-        <p>loading</p>
-      ) : blogs.length ? (
-        <div id="all-blogs">
-          <h3>All blogs:</h3>
-          <ul className="blogs-list">
-            {blogs.map((b) => (
-              <BlogItem blog={b} />
-            ))}
-          </ul>
-        </div>
-      ) : (
-        <p> No blogs data </p>
-      )}
+      <BlogsList data={blogs} isLoading={isLoading} />
     </div>
   );
 }
