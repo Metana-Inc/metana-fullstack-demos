@@ -37,8 +37,8 @@ function BlogsList({ data, isLoading }) {
     <div id="all-blogs">
       <h3>All blogs:</h3>
       <ul className="blogs-list">
-        {blogs.map((b) => (
-          <BlogItem blog={b} />
+        {data.map((row) => (
+          <BlogItem blog={row} />
         ))}
       </ul>
     </div>
