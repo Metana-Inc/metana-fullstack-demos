@@ -48,6 +48,10 @@ Building a React frontend for our API backend.
   - load blogs data from API in /blogs view
 
 - 8.8 - Add Blog item view
+- 8.9 - Add TailwindCSS for styling
+
+  - install tailwindcss
+  - add filetypes to tailwind config
 
 ## Todos
 
