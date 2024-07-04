@@ -48,6 +48,10 @@ Building a React frontend for our API backend.
   - load blogs data from API in /blogs view
 
 - 8.8 - Add Blog item view
+
+  - add single item view and route for a single blog item
+  - add links to blogs by ID in the blogs index view
+
 - 8.9 - Add TailwindCSS for styling
 
   - install tailwindcss
@@ -57,43 +61,3 @@ Building a React frontend for our API backend.
   - add a 404 page route and view
   - add placeholder Contact form
   - add config values for user contact, bio, email, and social media links
-
-## Todos
-
-Pages
-
-- [x] Add page: about
-- [x] Add page: contact
-- [x] Add 404 page
-
-Server
-
-- [x] Break out router for blogs,
-- [x] Add layout
-
-API
-
-- [x] Get data from API backend
-- [x] Implement data for /blogs, /users in frontend
-
-Components
-
-- [x] Add component: Navigation bar
-- [x] Add component: Footer
-- [ ] Add component: Contact form
-- [ ] Add component: User bio
-
-Projects section
-
-- [ ] Add page: projects index
-- [ ] Add page: project single
-
-Blogs section
-
-- [x] Add page: blogs index
-- [ ] Add page: blog single
-
-Styling
-
-- [x] install TailwindCSS
-- [x] include tailwind in project build
