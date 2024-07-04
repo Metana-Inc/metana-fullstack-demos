@@ -10,7 +10,7 @@ function NotFound() {
         />
       </div>
       <div className="text-center mt-20">
-        <h1 className="text-4xl text-8xl font-bold">404</h1>
+        <h1 className="text-8xl font-bold">404</h1>
         <div className="text-xl">Not found</div>
       </div>
     </div>

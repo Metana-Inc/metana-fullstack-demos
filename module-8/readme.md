@@ -57,9 +57,9 @@ Building a React frontend for our API backend.
 
 Pages
 
-- [ ] Add page: about
-- [ ] Add page: contact
-- [ ] Add 404 page
+- [x] Add page: about
+- [x] Add page: contact
+- [x] Add 404 page
 
 Server
 
@@ -68,8 +68,8 @@ Server
 
 API
 
-- [ ] Get data from API backend
-- [ ] Implement data for /blogs, /users in frontend
+- [x] Get data from API backend
+- [x] Implement data for /blogs, /users in frontend
 
 Components
 
@@ -90,5 +90,5 @@ Blogs section
 
 Styling
 
-- [ ] install TailwindCSS
-- [ ] include tailwind in project build
+- [x] install TailwindCSS
+- [x] include tailwind in project build
