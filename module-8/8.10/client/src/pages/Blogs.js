@@ -35,7 +35,7 @@ function BlogsList({ data, isLoading }) {
   }
   return (
     <div id="all-blogs">
-      <h3>All blogs:</h3>
+      <h3 className="text-xl my-12 font-semibold">All blogs:</h3>
       <ul className="blogs-list">
         {data.map((row) => (
           <BlogItem blog={row} />
@@ -66,7 +66,7 @@ function Blogs() {
 
   return (
     <div>
-      <h2>Blogs</h2>
+      <h2 className="text-2xl my-12 font-semibold">Blogs</h2>
       <p>This is the Blogs page</p>
       <BlogsList data={blogs} isLoading={isLoading} />
     </div>

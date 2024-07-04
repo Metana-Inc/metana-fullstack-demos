@@ -26,7 +26,7 @@ function BlogItem() {
       </Link>
       {blog ? (
         <div>
-          <h2>{blog.title}</h2>
+          <h2 className="text-2xl my-12 font-semibold">{blog.title}</h2>
           <p>{blog.content}</p>
         </div>
       ) : (

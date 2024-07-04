@@ -131,7 +131,7 @@ function ContactForm() {
 function Contact() {
   return (
     <div>
-      <h2>Contact</h2>
+      <h2 className="text-2xl my-12 font-semibold">Contact</h2>
 
       <div>
         <p>
@@ -142,7 +142,7 @@ function Contact() {
         </p>
       </div>
       <div className="mt-20">
-        <h3>Get in touch</h3>
+        <h3 className="text-xl my-12 font-semibold">Get in touch</h3>
         <p>If you'd like to get in touch, I'd love to hear from you.</p>
 
         {/* Contact form */}
@@ -150,7 +150,7 @@ function Contact() {
 
         {/* Social media */}
         <div className="contact-methods mt-20">
-          <h2>Social media</h2>
+          <h2 className="text-2xl my-12 font-semibold">Social media</h2>
           <p>
             <span className="contact-method-item">
               <a href={`mailto:${CONTACT_EMAIL}`}>Email</a>

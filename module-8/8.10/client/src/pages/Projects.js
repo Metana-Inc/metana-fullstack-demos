@@ -1,7 +1,7 @@
 function Projects() {
   return (
     <div>
-      <h2>Projects</h2>
+      <h2 className="text-2xl my-12 font-semibold">Projects</h2>
       <p>This is the Projects page</p>
     </div>
   );

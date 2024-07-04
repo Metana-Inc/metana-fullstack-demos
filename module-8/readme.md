@@ -56,6 +56,7 @@ Building a React frontend for our API backend.
 - 8.10 - Add 404 page, contact form
   - add a 404 page route and view
   - add placeholder Contact form
+  - add config values for user contact, bio, email, and social media links
 
 ## Todos
 
