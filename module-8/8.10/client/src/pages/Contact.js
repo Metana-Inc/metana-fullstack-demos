@@ -1,6 +1,7 @@
 // Views for the Contact page
 import './Contact.css';
 import { useState } from 'react';
+import { CONTACT_EMAIL, TWITTER_X_URL, FACEBOOK_URL } from '../config';
 
 function ContactForm() {
   const [email, setEmail] = useState();
@@ -128,9 +129,6 @@ function ContactForm() {
 
 // Contact page with form
 function Contact() {
-  const email = 'contact@example.com';
-  const facebook = '#';
-  const twitterX = '#';
   return (
     <div>
       <h2>Contact</h2>
@@ -155,17 +153,17 @@ function Contact() {
           <h2>Social media</h2>
           <p>
             <span className="contact-method-item">
-              <a href={`mailto:${email}`}>Email</a>
+              <a href={`mailto:${CONTACT_EMAIL}`}>Email</a>
             </span>
           </p>
           <p>
             <span className="contact-method-item">
-              <a href={facebook}>Facebook</a>
+              <a href={FACEBOOK_URL}>Facebook</a>
             </span>
           </p>
           <p>
             <span className="contact-method-item">
-              <a href={twitterX}>Twitter / X</a>
+              <a href={TWITTER_X_URL}>Twitter / X</a>
             </span>
           </p>
         </div>
