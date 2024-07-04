@@ -53,6 +53,10 @@ Building a React frontend for our API backend.
   - install tailwindcss
   - add filetypes to tailwind config
 
+- 8.10 - Add 404 page, contact form
+  - add a 404 page route and view
+  - add placeholder Contact form
+
 ## Todos
 
 Pages
