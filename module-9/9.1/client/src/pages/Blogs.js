@@ -16,7 +16,7 @@ function BlogItem({ blog }) {
   const blogId = blog._id;
   const preview = shortenContent(blog.content); // Short preview of the blog content
   return (
-    <li key={`blog-${blogId}`} className="blog-item">
+    <li className="blog-item">
       <Link to={`/blogs/${blogId}`}>
         <span>{blog.title}</span>
       </Link>
@@ -37,8 +37,8 @@ function BlogsList({ data, isLoading }) {
     <div id="all-blogs">
       <h3 className="text-xl my-12 font-semibold">All blogs:</h3>
       <ul className="blogs-list">
-        {data.map((row) => (
-          <BlogItem blog={row} />
+        {data.map((row, idx) => (
+          <BlogItem key={`blog-${idx}`} blog={row} />
         ))}
       </ul>
     </div>
