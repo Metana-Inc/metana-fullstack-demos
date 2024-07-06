@@ -1,7 +1,7 @@
 function Header() {
   return (
     <header id="header">
-      <h2 className="text-2xl my-12">Header</h2>
+      <h2 className="text-2xl my-12 h-16">Header</h2>
       <p>This is the page Header</p>
     </header>
   );
