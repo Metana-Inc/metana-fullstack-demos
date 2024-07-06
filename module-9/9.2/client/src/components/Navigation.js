@@ -1,26 +1,25 @@
 import { Link } from 'react-router-dom';
-import './Navigation.css';
+
+function NavItem({ url, children }) {
+  return (
+    <Link
+      className="px-4 py-2 mx-2 my-2 border border-x-0 border-t-0 border-b-green-500 text-green-500 bg-white rounded-sm hover:bg-green-500 hover:text-white"
+      to={url}
+    >
+      {children}
+    </Link>
+  );
+}
+
 function Navigation() {
   return (
-    <nav id="navigation">
-      <Link to="/" className="nav-item">
-        Home
-      </Link>
-      <Link to="/blogs" className="nav-item">
-        Blogs
-      </Link>
-      <Link to="/about" className="nav-item">
-        About
-      </Link>
-      <Link to="/projects" className="nav-item">
-        Projects
-      </Link>
-      <Link to="/contact" className="nav-item">
-        Contact
-      </Link>
-      <Link to="/login" className="nav-item">
-        Login
-      </Link>
+    <nav id="navigation" className="flex flex-row justify-end">
+      <NavItem url="/">Home</NavItem>
+      <NavItem url="/blogs">Blogs</NavItem>
+      <NavItem url="/about">About</NavItem>
+      <NavItem url="/projects">Projects</NavItem>
+      <NavItem url="/contact">Contact</NavItem>
+      <NavItem url="/login">Login</NavItem>
     </nav>
   );
 }
