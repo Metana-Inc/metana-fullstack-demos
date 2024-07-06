@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
-import './Blogs.css';
 
 // If a text string content is over 50 characters, shorten it and add a '...'.
 const shortenContent = (content) => {
@@ -16,11 +15,11 @@ function BlogItem({ blog }) {
   const blogId = blog._id;
   const preview = shortenContent(blog.content); // Short preview of the blog content
   return (
-    <li className="blog-item">
+    <li className="my-8">
       <Link to={`/blogs/${blogId}`}>
         <span>{blog.title}</span>
       </Link>
-      <span>{preview}</span>
+      <span className="ml-12">{preview}</span>
     </li>
   );
 }
@@ -35,8 +34,8 @@ function BlogsList({ data, isLoading }) {
   }
   return (
     <div id="all-blogs">
-      <h3 className="text-xl my-12 font-semibold">All blogs:</h3>
-      <ul className="blogs-list">
+      <h3 className="text-xl mt-12 font-semibold">All blogs:</h3>
+      <ul id="blogs-list" className="px-6">
         {data.map((row, idx) => (
           <BlogItem key={`blog-${idx}`} blog={row} />
         ))}
