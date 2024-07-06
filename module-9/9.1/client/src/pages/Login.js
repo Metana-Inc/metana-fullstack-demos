@@ -1,5 +1,8 @@
+import { useState } from 'react';
+
 // The login view
 function LoginPage() {
+  const [hasError, setHasError] = useState(false);
   const loginAction = () => {
     console.log('=== debug: placeholder for login action');
   };
@@ -39,22 +42,28 @@ function LoginPage() {
             Password
           </label>
           <input
-            class="shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
+            class={`shadow appearance-none border ${
+              hasError ? 'border-red-600' : ''
+            } rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline`}
             id="password"
             type="password"
             placeholder="******************"
           />
-          <p class="text-red-500 text-xs italic">Please choose a password.</p>
+          {hasError && (
+            <p class="text-red-500 text-xs italic hidden">
+              Please choose a password.
+            </p>
+          )}
         </div>
         <div class="flex items-center justify-between">
           <button
-            class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+            class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
             type="button"
           >
             Sign In
           </button>
           <a
-            class="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800"
+            class="inline-block align-baseline font-bold text-sm text-green-500 hover:text-green-600"
             href="#"
           >
             Forgot Password?
