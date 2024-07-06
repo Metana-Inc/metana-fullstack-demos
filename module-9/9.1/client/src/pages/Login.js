@@ -2,10 +2,11 @@ import { useState } from 'react';
 
 // The login view
 function LoginPage() {
-  const [hasError, setHasError] = useState(false);
-  const loginAction = () => {
+  const [hasError] = useState(false);
+  const loginAction = () =>
     console.log('=== debug: placeholder for login action');
-  };
+
+  const forgotPasswordUrl = '#';
 
   return (
     <div
@@ -17,7 +18,6 @@ function LoginPage() {
         id="login"
         method="POST"
         action="#"
-        onSubmit={loginAction}
         className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 w-1/3 min-w-72"
       >
         <div class="mb-4">
@@ -57,14 +57,15 @@ function LoginPage() {
         </div>
         <div class="flex items-center justify-between">
           <button
-            class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+            class="bg-green-500 hover:bg-green-600 text-white font-semibold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
             type="button"
+            onClick={loginAction}
           >
             Sign In
           </button>
           <a
             class="inline-block align-baseline font-bold text-sm text-green-500 hover:text-green-600"
-            href="#"
+            href={forgotPasswordUrl}
           >
             Forgot Password?
           </a>
