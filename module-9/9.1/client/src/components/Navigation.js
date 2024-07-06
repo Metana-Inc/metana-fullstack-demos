@@ -18,6 +18,9 @@ function Navigation() {
       <Link to="/contact" className="nav-item">
         Contact
       </Link>
+      <Link to="/login" className="nav-item">
+        Login
+      </Link>
     </nav>
   );
 }
