@@ -12,6 +12,7 @@ const app = express();
 import { PORT } from './config.js';
 import blogsRouter from './routes/blogsRouter.js';
 import usersRouter from './routes/usersRouter.js';
+import contactRouter from './routes/contactRouter.js';
 
 app.use(cors());
 
@@ -30,5 +31,7 @@ app.use('/api/blogs', blogsRouter);
 
 // user routes
 app.use('/api/users', usersRouter);
+
+app.use('/api/contact', contactRouter);
 
 app.listen(PORT, () => console.log(`backend server started on port ${PORT}`));
