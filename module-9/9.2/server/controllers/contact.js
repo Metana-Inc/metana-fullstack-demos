@@ -1,50 +1,61 @@
 // Contact functions for email signup / contact form
+import validator from 'validator';
 
 // Validation for contact form values
-function validateValues({ email, firstName, lastName, comments }) {
-  const emailValid = !!email.length && true; // TODO: validate email
-  const firstNameValid = !!firstName.length && true; // TODO: validate firstName
-  const lastNameValid = !!lastName.length && true; // TODO: validate lastName
-  const commentsValid = !!comments.length && true; // TODO: validate comments
+function validateValues({ email, firstName, lastName }) {
+  const emailValid = validator.isEmail(email);
+  const firstNameValid = validator.isAlpha(firstName?.trim().replace('-', '')); // replace hyphens in name before checking if it's alphabetic
+  const lastNameValid = validator.isAlpha(lastName?.trim().replace('-', ''));
 
-  return emailValid && firstNameValid && lastNameValid & commentsValid;
+  return emailValid && firstNameValid && lastNameValid;
 }
 
-// TODO: Sanitization function for email signup / contact form
-const sanitizeText = (str) => {
-  console.debug(`=== warning: sanitizeText not yet implemented`);
-  return str.trim();
-};
+// Sanitization function for user input from signup / contact forms.
+// Replaces any non-latin characters (besides .,_-!?"' and spaces). Allows Latin characters with diacritics.
+const cleanStringRegex = new RegExp(`[^\p{L}\p{Pd} !\?,\.]`, 'gmiu');
+const sanitizeText = (str) => str.trim().replace(cleanStringRegex, '');
 
-// TODO: Sanitization function for email address
-const sanitizeEmail = (email) => {
-  console.debug(`=== warning: sanitizeEmail not yet implemented`);
-  return email.trim();
-};
+// Sanitization function for human names. Allows spaces, latin characters, periods, and hyphens
+const cleanNameRegex = new RegExp(`[^\p{L} -\.]`, 'gmiu');
+const sanitizeName = (name) => name.trim().replace(cleanNameRegex, '');
 
 // handler for the contact submit form
-export function handleSubmitContact({ email, firstName, lastName, comments }) {
-  if (!validateValues({ email, firstName, lastName, comments })) {
-    throw new Error('form validation failed');
-  } else {
-    // Do something with this input
-    processContactForm({ email, firstName, lastName, comments });
+export async function handleSubmitContact({
+  email,
+  firstName,
+  lastName,
+  comments,
+}) {
+  if (!email || !firstName || !lastName) {
+    throw new Error('form values cannot be empty');
   }
+  if (!validateValues({ email, firstName, lastName, comments })) {
+    throw new Error('invalid form values failed');
+  }
+  // Do something with this input
+  await processContactForm({ email, firstName, lastName, comments });
 }
 
 // Function to save contact form data to database or send email to administrator
-export function processContactForm({ email, firstName, lastName, comments }) {
-  // Always sanitize any kind of input from users, or get hacked.
-  email = sanitizeEmail(email);
-  firstName = sanitizeText(firstName);
-  lastName = sanitizeText(lastName);
-  comments = sanitizeText(comments);
+async function processContactForm({ email, firstName, lastName, comments }) {
+  try {
+    // Always sanitize any kind of input from users, or get hacked.
+    if (!validator.isEmail(email)) {
+      throw new Error('invalid email');
+    }
+    email = email.trim();
+    firstName = sanitizeName(firstName);
+    lastName = sanitizeName(lastName);
+    comments = sanitizeText(comments);
 
-  // FIXME: do something with this input -- send administrator an email, or store to a database for processing.
-  console.log(`=== debug: form input received: `, {
-    email,
-    firstName,
-    lastName,
-    comments,
-  });
+    // FIXME: do something with this input -- send administrator an email, or store to a database for processing.
+    console.log(`=== debug: form input received: `, {
+      email,
+      firstName,
+      lastName,
+      comments,
+    });
+  } catch (err) {
+    throw new Error('sanitization failed');
+  }
 }
