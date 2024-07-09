@@ -11,12 +11,13 @@ function validateValues({ email, firstName, lastName }) {
 }
 
 // Sanitization function for user input from signup / contact forms.
-// Replaces any non-latin characters (besides .,_-!?"' and spaces). Allows Latin characters with diacritics.
-const cleanStringRegex = new RegExp(`[^\p{L}\p{Pd} !\?,\.]`, 'gmiu');
+// Replaces any non-alphanumeric characters (besides .,_-!?"' and spaces)
+const cleanStringRegex = new RegExp(`[^a-zA-Z0-9 '!\?,\.]`, 'gmi');
 const sanitizeText = (str) => str.trim().replace(cleanStringRegex, '');
 
-// Sanitization function for human names. Allows spaces, latin characters, periods, and hyphens
-const cleanNameRegex = new RegExp(`[^\p{L} -\.]`, 'gmiu');
+// Sanitization function for human names. Allows spaces, letters, periods, and hyphens
+// TODO: allow for Latin characters with diacritics
+const cleanNameRegex = new RegExp(`[^a-zA-Z ,\.]`, 'gmi');
 const sanitizeName = (name) => name.trim().replace(cleanNameRegex, '');
 
 // handler for the contact submit form
