@@ -32,23 +32,14 @@ export async function handleSubmitContact({
   if (!validateValues({ email, firstName, lastName, comments })) {
     throw new Error('invalid form values failed');
   }
-  // Do something with this input
-  await processContactForm({ email, firstName, lastName, comments });
-}
-
-// Function to save contact form data to database or send email to administrator
-async function processContactForm({ email, firstName, lastName, comments }) {
+  // _Always_ sanitize any kind of input from users, or expect to get hacked.
   try {
-    // Always sanitize any kind of input from users, or get hacked.
-    if (!validator.isEmail(email)) {
-      throw new Error('invalid email');
-    }
-    email = email.trim();
+    email = email.trim().toLowerCase();
     firstName = sanitizeName(firstName);
     lastName = sanitizeName(lastName);
     comments = sanitizeText(comments);
 
-    // FIXME: do something with this input -- send administrator an email, or store to a database for processing.
+    // TODO: Do something with this input: save contact form data to database or send email to administrator
     console.log(`=== debug: form input received: `, {
       email,
       firstName,
