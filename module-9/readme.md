@@ -22,6 +22,8 @@ In this module, we add login methods with JWT tokens for user authentication, pr
   - create login view and route in frontend
   - add a Login menu item on Navigation bar
   - improve styles on Login page form and Contact form
-- 9.2 - Add backend handlers for /login, /logout, and /contact
+- 9.2 - Add backend handler and route for contact form
+  - add a /contact route to backend
   - add a /controllers directory in backend, and add placeholder handlers for login, logout, and contact
-    - add `validator` library, and validate email in contact form handler
+  - add `validator` library, and validate email in contact form handler
+- 9.2 - Add backend handlers for /login, /logout
