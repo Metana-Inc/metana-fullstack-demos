@@ -13,6 +13,7 @@ import { PORT } from './config.js';
 import blogsRouter from './routes/blogsRouter.js';
 import usersRouter from './routes/usersRouter.js';
 import contactRouter from './routes/contactRouter.js';
+import authRouter from './routes/authRouter.js';
 
 app.use(cors());
 
@@ -33,5 +34,7 @@ app.use('/api/blogs', blogsRouter);
 app.use('/api/users', usersRouter);
 
 app.use('/api/contact', contactRouter);
+
+app.use('/api', authRouter);
 
 app.listen(PORT, () => console.log(`backend server started on port ${PORT}`));
