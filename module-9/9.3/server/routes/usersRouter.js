@@ -31,8 +31,11 @@ usersRouter.get('/:id', async (req, res) => {
 // Post new user
 usersRouter.post('/', async (req, res) => {
   try {
-    const { name, email, role } = req.body;
-    const newUser = new User({ name, email, role });
+    const { name, email, role, password } = req.body;
+    if (!name || !email || !name || !password) {
+      throw new Error('user values cannot be empty');
+    }
+    const newUser = new User({ name, email, role, password });
     await newUser.save();
     res.status(201).json(newUser);
   } catch (error) {
@@ -44,10 +47,13 @@ usersRouter.post('/', async (req, res) => {
 usersRouter.put('/:id', async (req, res) => {
   try {
     const { id } = req.params;
-    const { name, email, role } = req.body;
+    const { name, email, role, password } = req.body;
+    if (!name || !email || !name || !password) {
+      throw new Error('user values cannot be empty');
+    }
     const updatedUser = await User.findByIdAndUpdate(
       id,
-      { name, email, role },
+      { name, email, role, password },
       { new: true }
     );
     if (!updatedUser) {
