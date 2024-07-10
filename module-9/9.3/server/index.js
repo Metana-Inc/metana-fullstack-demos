@@ -2,6 +2,7 @@
 import express from 'express';
 import bodyParser from 'body-parser';
 import cors from 'cors';
+import cookieParser from 'cookie-parser';
 
 // Import morgan for logging
 import morgan from 'morgan';
@@ -23,6 +24,9 @@ app.use(bodyParser.json());
 
 // Configure morgan (combined, common, dev, short, tiny)
 app.use(morgan('combined'));
+
+// Cookie parser
+app.use(cookieParser());
 
 // Connect to MongoDB
 await connectToDatabase();

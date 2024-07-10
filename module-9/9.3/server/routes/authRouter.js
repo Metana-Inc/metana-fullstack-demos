@@ -7,7 +7,7 @@ import { login, logout } from '../controllers/auth.js';
 authRouter.post('/login', async (req, res) => {
   const { email, password } = req.body;
   try {
-    await login({ email, password });
+    await login({ res, email, password });
     res.status(200).json({ success: true, message: 'login successful' });
   } catch (err) {
     res.status(401).json({ error: err.message });
@@ -17,7 +17,7 @@ authRouter.post('/login', async (req, res) => {
 // Log out
 authRouter.post('/logout', async (req, res) => {
   try {
-    await logout();
+    await logout(res);
     res
       .status(200)
       .json({ success: true, message: 'You have been logged out' });
