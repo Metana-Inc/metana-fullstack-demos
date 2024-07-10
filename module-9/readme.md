@@ -27,3 +27,5 @@ In this module, we add login methods with JWT tokens for user authentication, pr
   - add a /controllers directory in backend, and add placeholder handlers for login, logout, and contact
   - add `validator` library, and validate email in contact form handler
 - 9.2 - Add backend handlers for /login, /logout
+  - add cookieparser library
+  - perform basic check against plaintext email/password, and save a cookie with user ID and login state
