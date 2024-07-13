@@ -40,3 +40,8 @@ In this module, we add login methods with JWT tokens for user authentication, pr
   - hash passwords on user create/update routes
   - add password hashing on seed function
   - use hashed password comparison on /login method
+- 9.5 - Add JWT tokens
+- 9.5 - Add auth middlewares
+  - add isAdmin middleware
+  - add isLoggedIn middleware
+  - add middlewares to protected routes
