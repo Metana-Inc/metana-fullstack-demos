@@ -35,6 +35,10 @@ const blogs = [
 async function doSeed() {
   console.log('[+] starting database seeding...');
 
+  // Get users emails and delete if they exist
+  const userEmails = users.map((user) => user.email);
+  await User.deleteMany({ email: { $in: userEmails } }); // eg: delete where user.email in [...]
+
   // Insert users, then get IDs for blogs
   const userRows = await User.insertMany(users);
   console.log('Users seeded:', users);
@@ -43,8 +47,8 @@ async function doSeed() {
     return blog;
   });
 
-  const blogRows = await Blog.insertMany(blogsWithUsers);
-  console.log(`${blogRows.length} blogs seeded:`, blogs);
+  await Blog.insertMany(blogsWithUsers);
+  console.log(`Blogs seeded:`, blogs);
   console.log('[+] seeding complete');
 }
 

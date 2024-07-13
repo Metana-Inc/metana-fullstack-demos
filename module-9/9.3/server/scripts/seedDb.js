@@ -8,7 +8,7 @@ mongoose.connect(`${MONGO_URI}`);
 const users = [
   {
     name: 'Admin John Doe',
-    email: 'test@gmail.com',
+    email: 'john.doe@example.com',
     password: 'password1',
     role: 'admin',
   },
