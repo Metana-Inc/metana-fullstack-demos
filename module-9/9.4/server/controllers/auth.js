@@ -1,14 +1,22 @@
 // Handlers for login/logout and authentication
 import validator from 'validator';
 import User from '../models/User.js';
+import bcrypt from 'bcrypt';
 
 // Validate the user credentials by plaintext password.
 // Returns user on success
 async function authenticateUser({ email, password }) {
   const user = await User.findOne({ email: email });
-  if (user && user?.password === password) {
-    return user;
+  if (!user) {
+    console.log('user not found: ', email);
+    return;
   }
+  const passwordValid = await bcrypt.compare(password, user.password);
+  if (!passwordValid) {
+    console.log('invalid password for user: ', email);
+    return;
+  }
+  return user;
 }
 
 // Check if a user is currently logged in
@@ -17,7 +25,8 @@ export function isLoggedIn(req) {
 }
 
 // Log in the user by email and password. Sets cookie with user details on success
-export async function login({ res, email, password }) {
+export async function login(req, res) {
+  const { email, password } = req.body;
   if (!email || !password) {
     throw new Error('email and password are required');
   }

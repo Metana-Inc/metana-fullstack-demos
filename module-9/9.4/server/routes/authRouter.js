@@ -5,9 +5,8 @@ import { login, logout } from '../controllers/auth.js';
 
 // Log in with email and password
 authRouter.post('/login', async (req, res) => {
-  const { email, password } = req.body;
   try {
-    await login({ res, email, password });
+    await login(req, res);
     res.status(200).json({ success: true, message: 'login successful' });
   } catch (err) {
     res.status(401).json({ error: err.message });
