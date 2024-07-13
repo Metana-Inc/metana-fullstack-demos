@@ -10,7 +10,7 @@ In this module, we add login methods with JWT tokens for user authentication, pr
 2. Contact form: Add a backend handler for contact form, and a "form submitted" action on the frontend
 3. Login handler: Add a placeholder backend handler for site login form
 4. Login/logout handlers: Add login/logout handlers with simple password authentication & cookies
-5. Password encryption: Add basic password encryption
+5. Password encryption: Add basic password hashing for users
 6. JWT tokens: Add JWT authentication
 7. Protected routes: add admin logged-in view with protected routes
 8. Add admin management views for blog posts, users, and projects.
@@ -38,4 +38,5 @@ In this module, we add login methods with JWT tokens for user authentication, pr
 - 9.4 - Add password hashing
   - add bcrypt library
   - hash passwords on user create/update routes
-  -
+  - add password hashing on seed function
+  - use hashed password comparison on /login method
