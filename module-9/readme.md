@@ -35,4 +35,7 @@ In this module, we add login methods with JWT tokens for user authentication, pr
   - add auth router
   - add login/logout methods to auth controller -- perform basic check against plaintext email/password
   - add cookieparser library, cookie-based storage of login state from login method
-- 9.4 - Add password encryption
+- 9.4 - Add password hashing
+  - add bcrypt library
+  - hash passwords on user create/update routes
+  -
