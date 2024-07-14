@@ -2,9 +2,11 @@
 import validator from 'validator';
 import User from '../models/User.js';
 import bcrypt from 'bcrypt';
+import jwt from 'jsonwebtoken';
+import { JWT_SECRET } from '../config.js';
 
 // Validate the user credentials by plaintext password.
-// Returns user on success
+// Returns user and signed JWT token on success (without the password attribute.)
 async function authenticateUser({ email, password }) {
   const user = await User.findOne({ email: email });
   if (!user) {
@@ -16,10 +18,32 @@ async function authenticateUser({ email, password }) {
     console.log('invalid password for user: ', email);
     return;
   }
-  return user;
+
+  // Generate a JWT token. We don't include the password in this token because it would be readable.
+  const token = jwt.sign(
+    {
+      id: user._id,
+      name: user.name,
+      email: user.email,
+      role: user.role,
+    },
+    JWT_SECRET,
+    { expiresIn: '1h' }
+  );
+
+  return {
+    token,
+    user: {
+      id: user._id,
+      name: user.name,
+      email: user.email,
+      role: user.role,
+    },
+  };
 }
 
-// Log in the user by email and password. Sets cookie with user details on success
+// Log in the user by email and password.
+// On success, generate a JWT token with user details, and store to cookie.
 export async function login(req, res) {
   const { email, password } = req.body;
   if (!email || !password) {
@@ -32,13 +56,16 @@ export async function login(req, res) {
     throw new Error('validation failed');
   }
   // Authenticate the user by password
-  const user = await authenticateUser({ email, password });
-  if (!user) {
+  const result = await authenticateUser({ email, password });
+  if (!result) {
     throw new Error('username or password invalid');
   }
-  res.cookie('user', JSON.stringify(user));
+
+  // Set the user and token to a cookie
+  const data = JSON.stringify({ ...result }); // this includes user and token
+  res.cookie('user', data);
   console.log('login successful');
-  return user;
+  return data;
 }
 
 // Log out the currently logged in user
