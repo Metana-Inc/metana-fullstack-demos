@@ -42,7 +42,7 @@ async function authenticateUser({ email, password }) {
   };
 }
 
-// Test if there's a cookie with valid user
+// Test if there's a token with valid user
 export function isAuthenticated(req) {
   try {
     const token = req.headers.authorization?.split(' ')[1]; // remove the 'Bearer ' from the beginning of the token
@@ -57,7 +57,7 @@ export function isAuthenticated(req) {
 }
 
 // Log in the user by email and password.
-// On success, generate a JWT token with user details, and store to cookie.
+// On success, return a signed JWT token and user details
 export async function login(req, res) {
   const { email, password } = req.body;
   if (!email || !password) {
@@ -76,15 +76,5 @@ export async function login(req, res) {
   }
 
   const { user, token } = result;
-  // Set the user and token to a cookie
-  const data = JSON.stringify({ ...result }); // this includes user and token
-  res.cookie('user', data);
-  console.log('login successful');
   return { user, token };
-}
-
-// Log out the currently logged in user
-export async function logout(res) {
-  res.clearCookie('user');
-  console.log('logged out');
 }
