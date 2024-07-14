@@ -2,6 +2,7 @@
 import express from 'express';
 import bodyParser from 'body-parser';
 import cors from 'cors';
+import cookieParser from 'cookie-parser';
 
 // Import morgan for logging
 import morgan from 'morgan';
