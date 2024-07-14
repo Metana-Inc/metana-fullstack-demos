@@ -45,3 +45,4 @@ In this module, we add login methods with JWT tokens for user authentication, pr
   - add isLoggedIn middleware
   - add middlewares to protected routes
   - remove cookie-based login storage
+  - remove /logout route
