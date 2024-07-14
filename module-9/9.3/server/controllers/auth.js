@@ -11,11 +11,6 @@ async function authenticateUser({ email, password }) {
   }
 }
 
-// Check if a user is currently logged in
-export function isLoggedIn(req) {
-  return !!req.cookie['user'];
-}
-
 // Log in the user by email and password. Sets cookie with user details on success
 export async function login({ res, email, password }) {
   if (!email || !password) {
