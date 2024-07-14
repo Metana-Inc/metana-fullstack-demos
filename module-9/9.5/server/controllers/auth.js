@@ -61,11 +61,12 @@ export async function login(req, res) {
     throw new Error('username or password invalid');
   }
 
+  const { user, token } = result;
   // Set the user and token to a cookie
   const data = JSON.stringify({ ...result }); // this includes user and token
   res.cookie('user', data);
   console.log('login successful');
-  return data;
+  return { user, token };
 }
 
 // Log out the currently logged in user
