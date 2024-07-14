@@ -43,13 +43,17 @@ async function authenticateUser({ email, password }) {
 }
 
 // Test if there's a cookie with valid user
-export async function isAuthenticated(req) {
-  const token = req.headers.authorization;
-  console.log('=== debug: auth token: ', token);
-  if (!token) {
-    return;
+export function isAuthenticated(req) {
+  try {
+    const token = req.headers.authorization?.split(' ')[1]; // remove the 'Bearer ' from the beginning of the token
+    console.log('=== debug: auth token received: ', token);
+    if (!token) {
+      return false;
+    }
+    return jwt.verify(token, JWT_SECRET);
+  } catch (err) {
+    console.log('authentication error: ', err.message);
   }
-  return jwt.verify(token, JWT_SECRET);
 }
 
 // Log in the user by email and password.

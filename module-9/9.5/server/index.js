@@ -16,6 +16,9 @@ import usersRouter from './routes/usersRouter.js';
 import contactRouter from './routes/contactRouter.js';
 import authRouter from './routes/authRouter.js';
 
+// Middleware
+import { isLoggedIn } from './middleware/auth-middleware.js';
+
 app.use(cors());
 
 // Configure body parser middleware
@@ -37,8 +40,15 @@ app.use('/api/blogs', blogsRouter);
 // user routes
 app.use('/api/users', usersRouter);
 
+// contact form submission route
 app.use('/api/contact', contactRouter);
 
+// Login/logout and authentication routes
 app.use('/api', authRouter);
+
+// Example private route
+app.get('/api/private', isLoggedIn, (req, res) => {
+  res.status(200).json({ success: true, message: 'this is a private route' });
+});
 
 app.listen(PORT, () => console.log(`backend server started on port ${PORT}`));
