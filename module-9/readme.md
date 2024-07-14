@@ -34,14 +34,14 @@ In this module, we add login methods with JWT tokens for user authentication, pr
 - 9.3 - Simple password-based login/logout methods with cookies
   - add auth router
   - add login/logout methods to auth controller -- perform basic check against plaintext email/password
-  - add cookieparser library, cookie-based storage of login state from login method
 - 9.4 - Add password hashing
   - add bcrypt library
   - hash passwords on user create/update routes
   - add password hashing on seed function
   - use hashed password comparison on /login method
-- 9.5 - Add JWT tokens
-- 9.6 - Add auth middlewares
+- 9.5 - Add JWT tokens and auth middlewares
+  - add JWT library
   - add isAdmin middleware
   - add isLoggedIn middleware
   - add middlewares to protected routes
+  - add example
