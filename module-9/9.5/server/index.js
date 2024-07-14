@@ -28,6 +28,9 @@ app.use(bodyParser.json());
 // Configure morgan (combined, common, dev, short, tiny)
 app.use(morgan('combined'));
 
+// Cookie parser
+app.use(cookieParser());
+
 // Connect to MongoDB
 await connectToDatabase();
 
