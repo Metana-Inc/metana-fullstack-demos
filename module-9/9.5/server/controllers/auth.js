@@ -42,6 +42,16 @@ async function authenticateUser({ email, password }) {
   };
 }
 
+// Test if there's a cookie with valid user
+export async function isAuthenticated(req) {
+  const token = req.headers.authorization;
+  console.log('=== debug: auth token: ', token);
+  if (!token) {
+    return;
+  }
+  return jwt.verify(token, JWT_SECRET);
+}
+
 // Log in the user by email and password.
 // On success, generate a JWT token with user details, and store to cookie.
 export async function login(req, res) {
