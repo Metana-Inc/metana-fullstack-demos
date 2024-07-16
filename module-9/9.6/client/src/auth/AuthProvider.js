@@ -5,10 +5,14 @@ import { apiLogin } from '../api/auth.js';
 export async function login({ email, password }) {
   console.log('=== debug: POST to /api/login ...');
   const response = await apiLogin({ email, password });
-  if (!response) {
-    throw new Error('login failed -- response:', response);
+  console.log(`=== debug: API response:`, response);
+  if (!response.success) {
+    throw new Error('login failed:', response?.message || 'unknown error');
   }
-  const { user, token } = response;
+  const { user, token } = response.data;
+  if (!user || !token) {
+    throw new Error('response user or token is empty');
+  }
   console.log(`=== debug: user:`, user);
   console.log(`=== debug: token:`, token);
 

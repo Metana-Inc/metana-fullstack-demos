@@ -55,9 +55,9 @@ function LoginForm({ setIsLoggedIn }) {
   const loginAction = async () => {
     try {
       console.log('starting login...');
-      console.log('=== debug: email: ', email, ' password: ', password);
-      const data = await login({ email, password });
-      console.log('=== debug: user: ', data);
+      const user = await login({ email, password });
+      // Do something with the user here...
+      console.log('user: ', user);
       setIsLoggedIn(true);
       setHasError(false);
       console.log('logged in');
