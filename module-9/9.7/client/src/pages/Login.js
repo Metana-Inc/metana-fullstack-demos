@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
-import { login, logout } from '../auth/AuthProvider';
-
+import { login, logout } from '../controllers/auth';
 // The login view
 function LoginPage() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
