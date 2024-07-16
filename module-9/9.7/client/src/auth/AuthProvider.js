@@ -2,11 +2,24 @@
 
 import authAPI from '../api/authAPI';
 
+// Return previous user login and token from localstorage, if existing.
+export function loadPrevLogin() {
+  console.log('=== debug: load previous login');
+  const user = localStorage.getItem('user');
+  const token = localStorage.getItem('authToken');
+  if (!user || !token) {
+    console.log('=== debug: no previous login data');
+  } else {
+    console.log(
+      `=== debug: previous login data: user: ${user} token: ${token}`
+    );
+  }
+  return { user, token };
+}
+
 // Method that does the actual login, and stores the response data to localStorage
 export async function login({ email, password }) {
-  console.log('=== debug: POST to /api/login ...');
   const response = await authAPI.login({ email, password });
-  console.log(`=== debug: API response:`, response);
   if (!response.success) {
     throw new Error('login failed:', response?.message || 'unknown error');
   }
@@ -14,27 +27,22 @@ export async function login({ email, password }) {
   if (!user || !token) {
     throw new Error('response user or token is empty');
   }
-  console.log(`=== debug: user:`, user);
-  console.log(`=== debug: token:`, token);
 
-  // Do something with the token
+  // Save auth token to localstorage
   console.log('login successful');
-  saveAuthToken(token);
+  localStorage.setItem('user', user);
+  localStorage.setItem('authToken', token);
+
   return user;
 }
 
+// Clear auth token from localstorage
 export async function logout() {
   try {
-    clearAuthToken();
+    localStorage.removeItem('user');
+    localStorage.removeItem('authToken');
+    console.log('logged out');
   } catch (err) {
     console.error('Logout error:', err);
   }
 }
-
-const saveAuthToken = (token) => {
-  console.log('FIXME: Save Auth Token');
-};
-
-const clearAuthToken = () => {
-  console.log('FIXME: Clear Auth Token');
-};
