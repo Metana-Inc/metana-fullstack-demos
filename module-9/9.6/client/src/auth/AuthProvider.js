@@ -1,10 +1,11 @@
 // Context provider for login/logout and authentication routes.
-import { apiLogin } from '../api/auth.js';
+
+import authAPI from '../api/authAPI';
 
 // Method that does the actual login, and stores the response data to localStorage
 export async function login({ email, password }) {
   console.log('=== debug: POST to /api/login ...');
-  const response = await apiLogin({ email, password });
+  const response = await authAPI.login({ email, password });
   console.log(`=== debug: API response:`, response);
   if (!response.success) {
     throw new Error('login failed:', response?.message || 'unknown error');

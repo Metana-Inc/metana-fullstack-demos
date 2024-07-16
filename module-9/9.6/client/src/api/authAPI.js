@@ -7,7 +7,7 @@ const API = axios.create({
 });
 
 // Login through the backend API and return the response data
-export async function apiLogin({ email, password }) {
+export async function login({ email, password }) {
   const response = await API.post('/login', { email, password });
   if (response.status === 200) {
     console.log('/api/login success');
@@ -16,3 +16,9 @@ export async function apiLogin({ email, password }) {
   console.log(`/api/login failure: `, response);
   return false;
 }
+
+const authAPI = {
+  login,
+};
+
+export default authAPI;

@@ -47,4 +47,8 @@ In this module, we add login methods with JWT tokens for user authentication, pr
   - remove cookie-based login storage
   - remove /logout route
 - 9.6 - Add frontend auth mechanism
-  -
+  - add client /api routes with authAPI.js, blogsAPI.js, and usersAPI.js placeholders
+  - add client /login method to /api/auth.js to call API backend
+  - add client /auth directory
+  - add /auth/AuthProvider and basic login/logout functions
+  - add form handler logic in Login page to call API login method
