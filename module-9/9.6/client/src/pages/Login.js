@@ -46,7 +46,7 @@ const LogoutButton = ({ onClick }) => (
 
 // The login form
 function LoginForm({ setIsLoggedIn }) {
-  const [hasError] = useState(false);
+  const [hasError, setHasError] = useState(false);
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
   const [canSubmit, setCanSubmit] = useState(false);
@@ -59,9 +59,11 @@ function LoginForm({ setIsLoggedIn }) {
       const data = await login({ email, password });
       console.log('=== debug: user: ', data);
       setIsLoggedIn(true);
+      setHasError(false);
       console.log('logged in');
     } catch (err) {
-      console.log('error', err);
+      console.log('login failed: ' + err.message);
+      setHasError(true);
     }
   };
 
@@ -81,6 +83,11 @@ function LoginForm({ setIsLoggedIn }) {
       action="#"
       className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 w-1/3 min-w-72"
     >
+      {hasError && (
+        <div className="h-12 warn text-red-500 text-center text-xl">
+          There was an error with your login.
+        </div>
+      )}
       <div className="mb-4">
         <label
           className="block text-gray-700 text-sm font-bold mb-2"
