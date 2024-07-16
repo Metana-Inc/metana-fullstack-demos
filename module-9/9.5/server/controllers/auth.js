@@ -28,7 +28,7 @@ async function authenticateUser({ email, password }) {
       role: user.role,
     },
     JWT_SECRET,
-    { expiresIn: '1h' }
+    { expiresIn: '4h' }
   );
 
   return {

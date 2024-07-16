@@ -1,7 +1,7 @@
 // Router for contact methods
 import express from 'express';
 const authRouter = express.Router();
-import { login, logout } from '../controllers/auth.js';
+import { login } from '../controllers/auth.js';
 
 // Log in with email and password
 authRouter.post('/login', async (req, res) => {
