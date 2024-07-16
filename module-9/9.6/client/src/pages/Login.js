@@ -52,7 +52,9 @@ function LoginForm({ setIsLoggedIn }) {
   const [canSubmit, setCanSubmit] = useState(false);
   const forgotPasswordUrl = '#';
 
-  const loginAction = async () => {
+  // Handler for the login form
+  const handleSubmit = async (e) => {
+    e.preventDefault();
     try {
       console.log('starting login...');
       const user = await login({ email, password });
@@ -82,6 +84,7 @@ function LoginForm({ setIsLoggedIn }) {
       method="POST"
       action="#"
       className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 w-1/3 min-w-72"
+      onSubmit={handleSubmit}
     >
       {hasError && (
         <div className="h-12 warn text-red-500 text-center text-xl">
@@ -130,8 +133,7 @@ function LoginForm({ setIsLoggedIn }) {
           className={`${
             canSubmit ? 'bg-green-500 hover:bg-green-600' : 'bg-gray-300'
           } text-white font-semibold py-2 px-4 rounded focus:outline-none focus:shadow-outline`}
-          type="button"
-          onClick={loginAction}
+          type="submit"
           disabled={!canSubmit}
         >
           Sign In
