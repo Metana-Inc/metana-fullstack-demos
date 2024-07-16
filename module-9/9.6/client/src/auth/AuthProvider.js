@@ -17,24 +17,19 @@ export async function login({ email, password }) {
   console.log(`=== debug: user:`, user);
   console.log(`=== debug: token:`, token);
 
-  // Do something with the token
+  // Save auth token to localstorage
   console.log('login successful');
-  saveAuthToken(token);
+  localStorage.setItem('authToken', token);
+
   return user;
 }
 
+// Clear auth token from localstorage
 export async function logout() {
   try {
-    clearAuthToken();
+    localStorage.clearItem('authToken');
+    console.log('logged out');
   } catch (err) {
     console.error('Logout error:', err);
   }
 }
-
-const saveAuthToken = (token) => {
-  console.log('FIXME: Save Auth Token');
-};
-
-const clearAuthToken = () => {
-  console.log('FIXME: Clear Auth Token');
-};
