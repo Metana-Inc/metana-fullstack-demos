@@ -54,4 +54,6 @@ In this module, we add login methods with JWT tokens for user authentication, pr
   - add form handler logic in Login page to call API login method
 - 9.7 - Add Auth context and persistent storage of auth tokens
   - add methods to store auth tokens in localStorage
-  - add AuthProvider in /context
+  - add AuthProvider and AuthContext in /context
+  - wrap App in AuthProvider context
+  - add auth context to Login form
