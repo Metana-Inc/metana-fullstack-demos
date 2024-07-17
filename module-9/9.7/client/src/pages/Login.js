@@ -1,28 +1,13 @@
-import { useEffect, useState, useContext } from 'react';
-import { login, logout } from '../controllers/auth';
-import AuthContext from '../context/AuthProvider';
-
+import { useEffect, useState } from 'react';
+import { useAuth } from '../context/AuthProvider';
 // The login view
 function LoginPage() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const { auth, setAuth } = useContext(AuthContext); // import the setAuth state from AuthContext provider.
-
-  useEffect(() => {
-    // If there's already a user object in auth context, we are already logged in.
-    if (auth?.user) {
-      setIsLoggedIn(true);
-    } else {
-      setIsLoggedIn(false);
-    }
-  }, [auth]); // Monitor for changes in the auth state
+  const { user, login, logout, isLoggedIn } = useAuth();
 
   const logoutAction = async () => {
     try {
       await logout();
-      // Clear the user and token from Auth context
-      setAuth({ user: null, token: null }); // TODO: move this to the auth controller
       console.log('logged out');
-      setIsLoggedIn(false);
     } catch (err) {
       console.log('error', err);
     }
@@ -34,7 +19,7 @@ function LoginPage() {
         <h2 className="text-2xl text-center mb-8 relative">Login</h2>
         <h1 className="text-2xl text-red-600 my-6">
           {isLoggedIn ? (
-            <span>You are logged in</span>
+            <span>You are logged in as {user?.email} </span>
           ) : (
             <span>You are not logged in</span>
           )}
@@ -45,7 +30,7 @@ function LoginPage() {
           <LogoutButton onClick={logoutAction} />
         </div>
       ) : (
-        <LoginForm setIsLoggedIn={setIsLoggedIn} />
+        <LoginForm loginAction={login} />
       )}
     </div>
   );
@@ -61,8 +46,7 @@ const LogoutButton = ({ onClick }) => (
 );
 
 // The login form
-function LoginForm({ setIsLoggedIn }) {
-  const { setAuth } = useContext(AuthContext); // import the setAuth state from AuthContext provider.
+function LoginForm({ loginAction }) {
   const [hasError, setHasError] = useState(false);
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
@@ -73,11 +57,10 @@ function LoginForm({ setIsLoggedIn }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const user = await login({ email, password });
-      // Set user in AuthContext
-      setAuth({ user });
-      console.log('user: ', user);
-      setIsLoggedIn(true);
+      const user = await loginAction({ email, password });
+      if (!user) {
+        throw `user is empty`;
+      }
       setHasError(false);
       console.log('logged in');
     } catch (err) {
@@ -86,7 +69,7 @@ function LoginForm({ setIsLoggedIn }) {
     }
   };
 
-  // Enable the submit button on all fields filled
+  // Enable the submit button when all fields filled
   useEffect(() => {
     if (email?.length && password?.length) {
       setCanSubmit(true);
