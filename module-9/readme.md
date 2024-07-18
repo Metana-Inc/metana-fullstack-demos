@@ -56,4 +56,4 @@ In this module, we add login methods with JWT tokens for user authentication, pr
   - add auth context to Login form
   - move login/logout logic into AuthProvider
 - 9.8 - Protected routes
-  - client: add ProtectedRoute wrapper
+  - client: add ProtectedRoute wrapper in /components

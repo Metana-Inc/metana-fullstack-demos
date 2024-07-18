@@ -6,6 +6,7 @@ import Blogs from './pages/Blogs';
 import BlogItem from './pages/BlogItem';
 import About from './pages/About';
 import Projects from './pages/Projects';
+import Profile from './pages/Profile';
 import Contact from './pages/Contact';
 import LoginPage from './pages/Login';
 import NotFound from './pages/NotFound';
@@ -20,6 +21,7 @@ function App() {
         <Route path="/about" element={<About />} />
         <Route path="/projects" element={<Projects />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/profile" element={<Profile />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="*" element={<NotFound />} />
       </Route>
