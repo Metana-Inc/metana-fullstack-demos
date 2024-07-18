@@ -1,24 +1,30 @@
 import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { useAuth } from '../context/AuthProvider';
 // The login view
 function LoginPage() {
   const { user, logout, isLoggedIn } = useAuth();
 
   return (
-    <div id="wrapper" className="grid h-screen place-items-center">
-      <div className="relative -top-20">
-        <h2 className="text-2xl text-center mb-8 relative">Login</h2>
-        <h1 className="text-2xl text-red-600 my-6">
-          {isLoggedIn ? (
-            <span>You are logged in as {user?.email} </span>
-          ) : (
-            <span>You are not logged in</span>
-          )}
-        </h1>
+    <div
+      id="wrapper"
+      className="flex flex-col h-full my-40 items-center justify-center0"
+    >
+      <div>
+        <h2 className="text-2xl text-center mb-8 relative">
+          {isLoggedIn ? 'Logged in' : 'Login'}
+        </h2>
       </div>
       {isLoggedIn ? (
-        <div className="my-20">
-          <LogoutButton onClick={logout} />
+        <div className="my-20 text-center">
+          <h1 className="text-xl mb-6">You are logged in as {user?.email}.</h1>
+          <p className="my-4 text-lg">
+            Go to your <Link to="/profile">profile</Link>
+          </p>
+
+          <div className="mt-16">
+            <LogoutButton onClick={logout} />
+          </div>
         </div>
       ) : (
         <LoginForm />
