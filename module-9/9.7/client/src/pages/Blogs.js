@@ -49,12 +49,10 @@ function Blogs() {
   const [blogs, setBlogs] = useState([]);
 
   useEffect(() => {
-    console.log('=== debug: fetching blogs data...');
     async function getBlogs() {
       const result = await axios.get('/api/blogs');
       setIsLoading(false);
       if (result && result.status === 200) {
-        console.log('=== debug: data returned: ', result.data);
         setBlogs(result.data);
       } else {
         console.error('fetch data error: ' + result.status);

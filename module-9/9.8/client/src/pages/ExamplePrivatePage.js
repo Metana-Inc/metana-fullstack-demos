@@ -19,9 +19,8 @@ function ExamplePrivatePage() {
   // Example of using private API request inside a useEffect hook.
   useEffect(() => {
     const getData = async () => {
-      console.log('=== DEBUG: private API async call triggered...');
       const result = await protectedAPI.privateApiExample(token);
-      console.log('=== DEBUG: private API response: ' + JSON.stringify(result));
+      console.log('=== debug: private API response: ' + JSON.stringify(result)); // delete this from your code
       if (result.status === 200) {
         setPrivateData(JSON.stringify(result?.data));
       } else {

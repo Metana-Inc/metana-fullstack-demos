@@ -55,5 +55,11 @@ In this module, we add login methods with JWT tokens for user authentication, pr
   - wrap App in AuthProvider context
   - add auth context to Login form
   - move login/logout logic into AuthProvider
-- 9.8 - Protected routes
-  - client: add ProtectedRoute wrapper in /components
+- 9.8 - Frontend: add protected React routes
+  - add ProtectedRoute wrapper in /components, with auth check or redirect to login page
+  - add example Profile page and route
+  - add ExamplePrivatePage page and route
+  - wrap Profile page and ExamplePrivatePage page in ProtectedRoute, inside App routes
+  - add ExamplePrivatePage to navigation menu
+  - add /api/privateAPI.js and example private API function
+  - add async API call to an private API endpoint, with authorization token in ExamplePrivatePage

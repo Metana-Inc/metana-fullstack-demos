@@ -7,9 +7,8 @@ function LoginPage() {
 
   const logoutAction = async () => {
     try {
-      const data = await logout();
+      await logout();
       console.log('logged out');
-      console.log('=== debug: user: ', data);
       setIsLoggedIn(false);
     } catch (err) {
       console.log('error', err);

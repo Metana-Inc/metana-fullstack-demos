@@ -20,7 +20,6 @@ export const AuthProvider = ({ children }) => {
   // Load the previously stored login token when our app first loads.
   // This allows persistent login
   useEffect(() => {
-    console.log('=== debug: load previous login');
     const user = localStorage.getItem('user');
     const token = localStorage.getItem('authToken');
     if (user && token) {
@@ -28,7 +27,7 @@ export const AuthProvider = ({ children }) => {
       setToken(token);
       setIsLoggedIn(true);
     }
-  }, []);
+  }, [user]);
 
   async function login({ email, password }) {
     const response = await authAPI.login({ email, password });
