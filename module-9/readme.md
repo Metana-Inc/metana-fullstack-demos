@@ -18,29 +18,26 @@ In this module, we add login methods with JWT tokens for user authentication, pr
 # Steps
 
 - 9.1 - Login component and route
-  - add an `npm install:all` script to install frontend and backend dependencies
-  - create login view and route in frontend
-  - add a Login menu item on Navigation bar
-  - improve styles on Login page form and Contact form
-- 9.2 - Add backend handler and route for contact form
-  - add a /contact route to backend
-  - add a /controllers directory in backend, and add placeholder handlers for login, logout, and contact
-  - add `validator` library, and validate email in contact form handler
-- 9.2 - Contact form
-  - Add /contact and /auth controllers
-  - add contact router
-  - add contact and auth controllers
-  - add validator library, sanitization and validation functions on contact form input
-- 9.3 - Simple password-based login/logout methods with cookies
+  - scripts: add an `npm install:all` script to install frontend and backend dependencies
+  - login route: create login view and route in frontend
+  - contact route: create contact view and route in frontend
+  - navigation: add Login and Contact menu items on Navigation bar
+  - login and contact forms: improve styles on Login page form and Contact form
+- 9.2 - Backend: Contact form handler
+  - contact router: add a contactRouter.js to /routes
+  - add contact and auth controllers: add a new /controllers directory, and add files contact.js and auth.js.
+  - auth and contact handlers: add placeholder functions for login, logout in auth.js, and contact in contact.js
+  - validation: add `validator` library, and add sanitization and validation functions on contact form input
+- 9.3 - Backend: Simple password-based login/logout methods with cookies
   - add auth router
   - add login/logout methods to auth controller -- perform basic check against plaintext email/password
   - add cookieparser library, cookie-based storage of login state from login method
-- 9.4 - Add password hashing
+- 9.4 - Backend: Add password hashing
   - add bcrypt library
   - hash passwords on user create/update routes
   - add password hashing on seed function
   - use hashed password comparison on /login method
-- 9.5 - Add JWT tokens and auth middlewares
+- 9.5 - Backend: Add JWT tokens and auth middlewares
   - add isAdmin middleware
   - add isLoggedIn middleware
   - add middlewares to protected routes
@@ -58,3 +55,5 @@ In this module, we add login methods with JWT tokens for user authentication, pr
   - wrap App in AuthProvider context
   - add auth context to Login form
   - move login/logout logic into AuthProvider
+- 9.8 - Protected routes
+  - client: add ProtectedRoute wrapper
