@@ -10,6 +10,7 @@ import Profile from './pages/Profile';
 import Contact from './pages/Contact';
 import LoginPage from './pages/Login';
 import NotFound from './pages/NotFound';
+import ExamplePrivatePage from './pages/ExamplePrivatePage';
 import ProtectedRoute from './components/ProtectedRoute';
 
 function App() {
@@ -27,6 +28,14 @@ function App() {
           element={
             <ProtectedRoute>
               <Profile />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/example-private-page"
+          element={
+            <ProtectedRoute>
+              <ExamplePrivatePage />
             </ProtectedRoute>
           }
         />
