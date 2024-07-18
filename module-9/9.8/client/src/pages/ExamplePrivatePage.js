@@ -2,7 +2,7 @@
 // If the auth token is empty (ie: we're not logged in), then the API route will return an error.
 import { useEffect, useState } from 'react';
 import { useAuth } from '../context/AuthProvider';
-import axios from 'axios';
+import protectedAPI from '../api/protectedAPI';
 
 // Text formatted as code block
 function CodeBlock({ children }) {
@@ -15,12 +15,12 @@ function CodeBlock({ children }) {
 function ExamplePrivatePage() {
   const { user, token } = useAuth();
   const [privateData, setPrivateData] = useState(undefined);
+
+  // Example of using private API request inside a useEffect hook.
   useEffect(() => {
-    const examplePrivateAPICall = async () => {
+    const getData = async () => {
       console.log('=== DEBUG: private API async call triggered...');
-      const result = await axios.get('/api/private', {
-        headers: { Authorization: `Bearer ${token}` },
-      });
+      const result = await protectedAPI.privateApiExample(token);
       console.log('=== DEBUG: private API response: ' + JSON.stringify(result));
       if (result.status === 200) {
         setPrivateData(JSON.stringify(result?.data));
@@ -28,8 +28,9 @@ function ExamplePrivatePage() {
         setPrivateData('API error');
       }
     };
-    examplePrivateAPICall();
-  }, [user, token]);
+    getData();
+  }, [user, token]); // This will get triggered whenever the value of 'user' or 'token' changes.
+
   return (
     <div className="mx-20">
       <h2 className="text-2xl my-12 font-semibold">Example Private Page</h2>
