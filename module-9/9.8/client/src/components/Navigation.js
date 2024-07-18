@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom';
 import { useAuth } from '../context/AuthProvider';
-import { LogoutButton } from '../pages/Login';
 function NavItem({ url, children }) {
   return (
     <Link
