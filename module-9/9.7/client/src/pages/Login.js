@@ -2,16 +2,7 @@ import { useEffect, useState } from 'react';
 import { useAuth } from '../context/AuthProvider';
 // The login view
 function LoginPage() {
-  const { user, login, logout, isLoggedIn } = useAuth();
-
-  const logoutAction = async () => {
-    try {
-      await logout();
-      console.log('logged out');
-    } catch (err) {
-      console.log('error', err);
-    }
-  };
+  const { user, logout, isLoggedIn } = useAuth();
 
   return (
     <div id="wrapper" className="grid h-screen place-items-center">
@@ -27,10 +18,10 @@ function LoginPage() {
       </div>
       {isLoggedIn ? (
         <div className="my-20">
-          <LogoutButton onClick={logoutAction} />
+          <LogoutButton onClick={logout} />
         </div>
       ) : (
-        <LoginForm loginAction={login} />
+        <LoginForm />
       )}
     </div>
   );
@@ -46,20 +37,21 @@ const LogoutButton = ({ onClick }) => (
 );
 
 // The login form
-function LoginForm({ loginAction }) {
+function LoginForm() {
   const [hasError, setHasError] = useState(false);
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
   const [canSubmit, setCanSubmit] = useState(false);
   const forgotPasswordUrl = '#';
+  const { login } = useAuth();
 
   // Login handler for the login form
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const user = await loginAction({ email, password });
+      const user = await login({ email, password });
       if (!user) {
-        throw `user is empty`;
+        throw new Error('user is empty');
       }
       setHasError(false);
       console.log('logged in');

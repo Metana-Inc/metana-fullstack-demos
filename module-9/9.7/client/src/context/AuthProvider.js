@@ -1,5 +1,5 @@
 // Provider for Auth context
-import { createContext, useContext, useState } from 'react';
+import { createContext, useContext, useEffect, useState } from 'react';
 import authAPI from '../api/authAPI';
 
 // Define our AuthContext
@@ -15,22 +15,19 @@ export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState({});
   const [token, setToken] = useState({});
 
-  // Return previous user login and token from localstorage, if existing.
-  async function loadPrevLogin() {
+  // Load the previously stored login token when our app first loads.
+  // This allows persistent login
+  useEffect(() => {
     console.log('=== debug: load previous login');
     const user = localStorage.getItem('user');
     const token = localStorage.getItem('authToken');
-    if (!user || !token) {
-      console.log('=== debug: no previous login data');
-    } else {
-      console.log(
-        `=== debug: previous login data: user: ${user} token: ${token}`
-      );
-      setUser(user);
+    if (user && token) {
+      setUser(JSON.parse(user)); // convert this back from JSON string to object
       setToken(token);
+      setIsLoggedIn(true);
     }
-    return { user, token };
-  }
+  }, []);
+
   async function login({ email, password }) {
     const response = await authAPI.login({ email, password });
     if (!response.success) {
@@ -43,19 +40,26 @@ export const AuthProvider = ({ children }) => {
 
     // Save user and auth token to localstorage
     console.log('login successful');
-    localStorage.setItem('user', user);
+    localStorage.setItem('user', JSON.stringify(user)); // localstorage needs objects to be converted to string
     localStorage.setItem('authToken', token);
 
     // Save user and auth token to state
     setUser(user);
     setToken(token);
+    setIsLoggedIn(true);
 
     return user;
   }
   async function logout() {
     try {
+      // Clear user and token from localstorage
       localStorage.removeItem('user');
       localStorage.removeItem('authToken');
+
+      // Clear data from state
+      setUser(null);
+      setToken(null);
+      setIsLoggedIn(false);
       console.log('logged out');
     } catch (err) {
       console.error('Logout error:', err);
