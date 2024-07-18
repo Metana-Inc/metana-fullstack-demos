@@ -12,8 +12,20 @@ function NavItem({ url, children }) {
   );
 }
 
+// Plain navigation link without underline
+function NavItemPlain({ url, children }) {
+  return (
+    <Link
+      className="px-4 py-2 mx-2 my-2 text-green-500 bg-white rounded-sm hover:bg-green-500 hover:text-white"
+      to={url}
+    >
+      {children}
+    </Link>
+  );
+}
+
 function Navigation() {
-  const { isLoggedIn, logout } = useAuth();
+  const { isLoggedIn, user } = useAuth();
   return (
     <nav id="navigation" className="flex flex-row justify-end">
       <NavItem url="/">Home</NavItem>
@@ -21,11 +33,10 @@ function Navigation() {
       <NavItem url="/about">About</NavItem>
       <NavItem url="/projects">Projects</NavItem>
       <NavItem url="/contact">Contact</NavItem>
-      {isLoggedIn ? (
-        <LogoutButton onClick={logout} />
-      ) : (
-        <NavItem url="/login">Login</NavItem>
-      )}
+      <NavItem url="/contact">Contact</NavItem>
+      <NavItemPlain url="/login">
+        {isLoggedIn ? user.name : 'Log in'}
+      </NavItemPlain>
     </nav>
   );
 }
