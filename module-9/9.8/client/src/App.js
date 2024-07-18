@@ -32,7 +32,7 @@ function App() {
           }
         />
         <Route
-          path="/example-private-page"
+          path="/private-page"
           element={
             <ProtectedRoute>
               <ExamplePrivatePage />

@@ -31,7 +31,7 @@ function Navigation() {
       <NavItem url="/blogs">Blogs</NavItem>
       <NavItem url="/about">About</NavItem>
       <NavItem url="/projects">Projects</NavItem>
-      <NavItem url="/contact">Contact</NavItem>
+      <NavItem url="/private-page">Private page</NavItem>
       <NavItem url="/contact">Contact</NavItem>
       {isLoggedIn ? (
         <NavItemPlain url="/profile">{user.name}</NavItemPlain>
