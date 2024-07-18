@@ -5,6 +5,7 @@ import authAPI from '../api/authAPI';
 // Define our AuthContext
 const AuthContext = createContext({
   user: undefined,
+  isLoggedIn: false,
   login: async () => {},
   logout: async () => {},
 });

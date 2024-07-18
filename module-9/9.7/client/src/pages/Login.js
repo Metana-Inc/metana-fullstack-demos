@@ -26,13 +26,13 @@ function LoginPage() {
     </div>
   );
 }
-const LogoutButton = ({ onClick }) => (
+export const LogoutButton = ({ onClick }) => (
   <button
-    className="bg-green-500 hover:bg-green-600 text-white font-semibold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+    className="bg-green-500 hover:bg-green-600 text-white font-semibold py-2 px-4 my-2 mx-2 rounded focus:outline-none focus:shadow-outline"
     type="button"
     onClick={onClick}
   >
-    Sign out
+    Log out
   </button>
 );
 

@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
-
+import { useAuth } from '../context/AuthProvider';
+import { LogoutButton } from '../pages/Login';
 function NavItem({ url, children }) {
   return (
     <Link
@@ -12,6 +13,7 @@ function NavItem({ url, children }) {
 }
 
 function Navigation() {
+  const { isLoggedIn, logout } = useAuth();
   return (
     <nav id="navigation" className="flex flex-row justify-end">
       <NavItem url="/">Home</NavItem>
@@ -19,7 +21,11 @@ function Navigation() {
       <NavItem url="/about">About</NavItem>
       <NavItem url="/projects">Projects</NavItem>
       <NavItem url="/contact">Contact</NavItem>
-      <NavItem url="/login">Login</NavItem>
+      {isLoggedIn ? (
+        <LogoutButton onClick={logout} />
+      ) : (
+        <NavItem url="/login">Login</NavItem>
+      )}
     </nav>
   );
 }
