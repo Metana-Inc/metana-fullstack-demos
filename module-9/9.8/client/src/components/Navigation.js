@@ -33,9 +33,11 @@ function Navigation() {
       <NavItem url="/projects">Projects</NavItem>
       <NavItem url="/contact">Contact</NavItem>
       <NavItem url="/contact">Contact</NavItem>
-      <NavItemPlain url="/login">
-        {isLoggedIn ? user.name : 'Log in'}
-      </NavItemPlain>
+      {isLoggedIn ? (
+        <NavItemPlain url="/profile">{user.name}</NavItemPlain>
+      ) : (
+        <NavItemPlain url="/login">Log in</NavItemPlain>
+      )}
     </nav>
   );
 }
