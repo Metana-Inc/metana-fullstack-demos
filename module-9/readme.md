@@ -14,3 +14,4 @@ In this module, we add login methods with JWT tokens for user authentication, pr
 6. JWT tokens: Add JWT authentication
 7. Protected routes: add admin logged-in view with protected routes
 8. Add admin management views for blog posts, users, and projects.
+
