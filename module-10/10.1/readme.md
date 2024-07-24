@@ -1,16 +1,19 @@
-# Postman API Testing for Blog Routes
+Sure, here is the updated README file including the user login route testing:
 
-This guide provides step-by-step instructions for manually testing your blog API endpoints using Postman. Follow the steps below to ensure that each endpoint is functioning correctly. Screenshots are included to help illustrate each step.
+---
+
+# Postman API Testing for Blog and User Routes
+
+This guide provides step-by-step instructions for manually testing your blog and user API endpoints using Postman. Follow the steps below to ensure that each endpoint is functioning correctly. Screenshots are included to help illustrate each step.
 
 ## Prerequisites
 
-1. **Install Postman**: Download and install Postman from [here](https://www.postman.com/downloads/).
-2. **Seed the Database**: Run the seeding script to populate your database with sample blogs and users.
+1. **Seed the Database**: Run the seeding script to populate your database with sample blogs and users.
     ```bash
     npm run seed
     ```
 
-## Testing Steps
+## Blog Routes
 
 ### 1. Get All Blogs
 
@@ -106,4 +109,34 @@ This guide provides step-by-step instructions for manually testing your blog API
   4. Send the request.
   5. Verify the response confirms the blog was deleted.
   ![Postman Figure 5](./screenshots/postman-figure-5.png)
+
+## User Routes
+
+### 1. User Login
+
+- **Description**: Log in a user with their email and password.
+- **Method**: POST
+- **Endpoint**: `http://localhost:3000/api/login`
+- **Request Body**:
+    ```json
+    {
+      "email": "john.doe@example.com",
+      "password": "password1"
+    }
+    ```
+- **Steps**:
+  1. Open Postman.
+  2. Create a new POST request.
+  3. Enter the URL: `http://localhost:3000/api/login`
+  4. Go to the "Body" tab and select "raw" and "JSON" format.
+  5. Insert the request body:
+    ```json
+    {
+      "email": "john.doe@example.com",
+      "password": "password1"
+    }
+    ```
+  6. Send the request.
+  7. Verify the response confirms successful login and returns a token or user details.
+  ![Postman Figure 6](./screenshots/postman-figure-6.png)
 
