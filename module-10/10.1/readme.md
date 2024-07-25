@@ -1,7 +1,3 @@
-Sure, here is the updated README file including the user login route testing:
-
----
-
 # Postman API Testing for Blog and User Routes
 
 This guide provides step-by-step instructions for manually testing your blog and user API endpoints using Postman. Follow the steps below to ensure that each endpoint is functioning correctly. Screenshots are included to help illustrate each step.
