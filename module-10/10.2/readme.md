@@ -1,119 +1,125 @@
-# Unit and Integration Testing with Supertest and Jest
+# Frontend Testing for React Applications
 
-This guide provides step-by-step instructions for setting up and running unit and integration tests for your Express application using Supertest and Jest. Follow the steps below to ensure your API endpoints are properly tested.
+## Overview
 
-## Prerequisites
+Frontend testing ensures that your React components render correctly and function as expected. This guide outlines the steps to perform unit testing on your React components using Jest and React Testing Library.
 
-Before you start, ensure you have the following packages installed:
+## Dependencies
 
-1. **Jest**: A JavaScript testing framework.
-2. **Supertest**: A testing library for HTTP assertions.
-3. **Mongoose**: MongoDB object modeling tool.
-4. **dotenv**: Loads environment variables from a `.env` file.
-5. **babel-jest**: Transpiles ES modules and modern JavaScript for Jest.
-6. **@babel/preset-env**: Preset to compile JavaScript.
+### Required Packages
 
-Install these packages using npm:
+1. **Jest:** A testing framework for JavaScript.
+2. **React Testing Library:** A testing utility that provides a set of utilities to test React components.
+3. **Babel (optional):** If you use ES6+ syntax, you may need Babel to transpile your code.
+
+### Install Dependencies
+
+Run the following commands to install the necessary packages:
 
 ```bash
-npm install --save-dev jest supertest mongoose dotenv babel-jest @babel/preset-env
+# Install Jest and React Testing Library
+npm install --save-dev jest @testing-library/react @testing-library/jest-dom
+
+# If needed, install Babel for JavaScript transpilation
+npm install --save-dev @babel/core @babel/preset-env @babel/preset-react babel-jest
 ```
 
-Ensure your `package.json` is configured to use Jest, and set up Babel if you are using ES modules.
+## Configuration Files
 
-## Authentication Tests
+### 1. **Jest Configuration**
 
-### 1. Set Up Testing Environment
+Jest requires a configuration file to customize its behavior for your project.
 
-1. **Configure Test Environment**: Use environment variables to point to the test database and other configurations. Set up a test-specific `.env.test` file if needed.
+**Steps to Create `jest.config.js`:**
 
-2. **Initialize Test Database**: Connect to your test database before running tests to ensure tests don’t affect your production data.
+1. **Create the File:**
+   - In the root directory of your project, create a file named `jest.config.js`.
 
-### 2. Write Authentication Tests
+2. **Add Basic Configuration:**
+   - Add the following configuration to `jest.config.js` to set up Jest for testing React components:
 
-1. **Test User Login**:
-   - **Description**: Check that users can log in with valid credentials.
-   - **Method**: POST
-   - **Endpoint**: `/api/login`
-   - **Steps**:
-     1. Send a POST request with user credentials.
-     2. Verify that the response status is 200 (OK).
-     3. Check that the response includes a token.
+   ```javascript
+   module.exports = {
+     testEnvironment: 'jsdom',
+     transform: {
+       '^.+\\.jsx?$': 'babel-jest',
+     },
+     testMatch: ['**/__tests__/**/*.test.js'],
+     collectCoverage: true,
+     coverageDirectory: 'coverage',
+     coverageReporters: ['json', 'lcov', 'text', 'clover'],
+   };
+   ```
 
-## Database Connection Tests
+   - **`testEnvironment: 'jsdom'`**: Ensures Jest runs in a browser-like environment suitable for React components.
+   - **`transform`**: Uses Babel to transpile your JavaScript files.
+   - **`testMatch`**: Specifies where Jest should look for test files.
+   - **`collectCoverage`**: Enables code coverage reporting.
+   - **`coverageDirectory`**: Directory where coverage reports will be stored.
+   - **`coverageReporters`**: Formats of coverage reports.
 
-### 1. Set Up Mongoose Mocks
+### 2. **Babel Configuration**
 
-1. **Mock Database Connection**: Use mocking tools to simulate database connections for unit tests.
+Babel is needed to transpile modern JavaScript syntax so that Jest can understand it.
 
-### 2. Write Database Connection Tests
+**Steps to Create `.babelrc`:**
 
-1. **Test Successful Connection**:
-   - **Description**: Ensure that the application can connect to the database.
-   - **Steps**:
-     1. Mock the `mongoose.connect` method to simulate a successful connection.
-     2. Verify that the connection method is called with the correct URI.
+1. **Create the File:**
+   - In the root directory of your project, create a file named `.babelrc`.
 
-2. **Test Connection Error Handling**:
-   - **Description**: Ensure proper error handling if the connection fails.
-   - **Steps**:
-     1. Mock the `mongoose.connect` method to simulate a connection error.
-     2. Verify that the error is logged and the process exits with a failure status.
+2. **Add Babel Configuration:**
+   - Add the following configuration to `.babelrc` to support React and modern JavaScript features:
 
-## Blog Tests
+   ```json
+   {
+     "presets": [
+       "@babel/preset-env",
+       "@babel/preset-react"
+     ]
+   }
+   ```
 
-### 1. Set Up Testing Environment
+   - **`@babel/preset-env`**: Transpiles modern JavaScript features to a version compatible with your environment.
+   - **`@babel/preset-react`**: Transpiles JSX and other React-specific syntax.
 
-1. **Connect to Test Database**: Ensure that you are connected to the test database and that the blog collection is empty before running tests.
+## Steps
 
-2. **Clean Up Data**: Clear the blog collection after each test to avoid test interference.
+### 1. **Setup Your Testing Environment**
 
-### 2. Write Blog Tests
+1. **Install Dependencies:**
+   - Ensure that Jest, React Testing Library, and any additional tools are installed.
 
-1. **Test Creating a New Blog**:
-   - **Description**: Verify that a new blog can be created successfully.
-   - **Method**: POST
-   - **Endpoint**: `/api/blogs`
-   - **Steps**:
-     1. Send a POST request with blog details.
-     2. Verify that the response status is 201 (Created).
-     3. Check that the response contains the blog details.
+2. **Configure Jest:**
+   - Create or update your Jest configuration file (`jest.config.js`) to ensure it is compatible with React and Testing Library.
 
-2. **Test Getting All Blogs**:
-   - **Description**: Check that all blogs can be retrieved.
-   - **Method**: GET
-   - **Endpoint**: `/api/blogs`
-   - **Steps**:
-     1. Send a GET request to fetch all blogs.
-     2. Verify that the response status is 200 (OK).
-     3. Ensure the response includes all blogs.
+3. **Configure Babel (if needed):**
+   - Create or update your Babel configuration file (`.babelrc`) to ensure Jest can transpile modern JavaScript and JSX.
 
-3. **Test Getting a Single Blog by ID**:
-   - **Description**: Ensure that a specific blog can be retrieved by its ID.
-   - **Method**: GET
-   - **Endpoint**: `/api/blogs/:id`
-   - **Steps**:
-     1. Send a GET request with a specific blog ID.
-     2. Verify that the response status is 200 (OK).
-     3. Check that the response includes the blog details.
+### 2. **Create Test Files**
 
-4. **Test Updating a Blog**:
-   - **Description**: Verify that a blog can be updated successfully.
-   - **Method**: PUT
-   - **Endpoint**: `/api/blogs/:id`
-   - **Steps**:
-     1. Send a PUT request with updated blog details.
-     2. Verify that the response status is 200 (OK).
-     3. Check that the response contains the updated blog details.
+1. **Locate or Create the Component Test File:**
+   - Place your test files in a dedicated `__tests__` directory or alongside your components with a `.test.js` suffix.
 
-5. **Test Deleting a Blog**:
-   - **Description**: Ensure that a blog can be deleted successfully.
-   - **Method**: DELETE
-   - **Endpoint**: `/api/blogs/:id`
-   - **Steps**:
-     1. Send a DELETE request with a specific blog ID.
-     2. Verify that the response status is 200 (OK).
-     3. Check that the response contains the deleted blog details.
+2. **Import Required Libraries:**
+   - Import React, Testing Library methods, and your component in the test file.
+
+### 3. **Write Your Tests**
+
+1. **Render the Component:**
+   - Use the appropriate method from React Testing Library to render your component within a test.
+
+2. **Add Assertions:**
+   - Add assertions to verify that your component displays the correct content or behaves as expected.
+
+3. **Add Console Messages (Optional):**
+   - Include `console.log` statements to trace the execution flow and debug issues.
+
+### 4. **Examples of Tests**
+
+- **Header Component:** Verify that the header displays the correct title and content.
+- **Navigation Component:** Check that navigation links are correctly rendered based on the user’s login status.
+- **ProtectedRoute Component:** Ensure that the component redirects users to the login page if they are not logged in, and renders the protected content if they are logged in.
+- **Footer Component:** Confirm that the footer displays the correct contact information and copyright details.
 
 
-![Supertest Figure 1](./screenshots/supertest-figure-1.png)
+![Frontend Test Figure 1](./screenshots/frontend-jest-test-figure-1.png)

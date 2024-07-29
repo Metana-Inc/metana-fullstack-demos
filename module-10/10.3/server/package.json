@@ -10,9 +10,7 @@
     "build:frontend": "cd ../client && npm run build",
     "install:all": "npm install && (cd ../client && npm install)",
     "dev": "concurrently \"npm run start:backend\" \"npm run start:frontend\" ",
-    "test": "npm run test:selenium && npm run test:api",
-    "test:api": "jest __tests__/api --config=jest.api.config.js --detectOpenHandles --coverage",
-    "test:selenium": "jest __tests__/selenium --config=jest.selenium.config.js --detectOpenHandles --coverage",
+    "test": "jest --detectOpenHandles --coverage",
     "seed": "node scripts/seedDb.js"
   },
   "type": "module",
@@ -50,11 +48,8 @@
     "@babel/core": "^7.24.9",
     "@babel/preset-env": "^7.24.8",
     "@shelf/jest-mongodb": "^4.3.2",
-    "babel-jest": "^29.7.0",
-    "chromedriver": "^127.0.0",
     "concurrently": "^8.2.2",
     "jest": "^29.7.0",
-    "selenium-webdriver": "^4.23.0",
     "supertest": "^7.0.0"
   }
 }

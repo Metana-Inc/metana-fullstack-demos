@@ -1,3 +1,4 @@
+import React from 'react';
 import { CONTACT_EMAIL, CONTACT_PHONE, COPYRIGHT_INFO } from '../config.js';
 
 function Footer() {

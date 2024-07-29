@@ -1,60 +1,119 @@
-# Automated Browser Testing | Selenium and Jest
+# Unit and Integration Testing with Supertest and Jest
 
-This guide will walk you through the process of setting up automated browser testing with Selenium and Jest. Follow these steps to configure your environment and write your tests.
+This guide provides step-by-step instructions for setting up and running unit and integration tests for your Express application using Supertest and Jest. Follow the steps below to ensure your API endpoints are properly tested.
 
 ## Prerequisites
 
-1. **Install Jest and Selenium WebDriver**: You will need to install these packages via npm.
+Before you start, ensure you have the following packages installed:
 
-## Steps to Set Up Automated Browser Testing
+1. **Jest**: A JavaScript testing framework.
+2. **Supertest**: A testing library for HTTP assertions.
+3. **Mongoose**: MongoDB object modeling tool.
+4. **dotenv**: Loads environment variables from a `.env` file.
+5. **babel-jest**: Transpiles ES modules and modern JavaScript for Jest.
+6. **@babel/preset-env**: Preset to compile JavaScript.
 
-### 1. Install Necessary Packages
+Install these packages using npm:
 
-1. Open your terminal.
-2. Run the following command to install Jest, Selenium WebDriver, and any other necessary dependencies:
-    
-    ```
-    npm install --save-dev jest selenium-webdriver
-    ```
-    
+```bash
+npm install --save-dev jest supertest mongoose dotenv babel-jest @babel/preset-env
+```
 
-### 2. Create Jest Configuration Files
+Ensure your `package.json` is configured to use Jest, and set up Babel if you are using ES modules.
 
-### a. Create `jest.config.cjs`
+## Authentication Tests
 
-1. In the root of your project directory, create a file named `jest.config.cjs`.
-2. This file will contain the configuration settings for Jest.
+### 1. Set Up Testing Environment
 
-### b. Create `jest.api.config.js`
+1. **Configure Test Environment**: Use environment variables to point to the test database and other configurations. Set up a test-specific `.env.test` file if needed.
 
-1. In the root of your project directory, create a file named `jest.api.config.js`.
-2. This file will be used to configure API-specific Jest settings if you have any API tests.
+2. **Initialize Test Database**: Connect to your test database before running tests to ensure tests don’t affect your production data.
 
-### c. Create `jest.selenium.config.js`
+### 2. Write Authentication Tests
 
-1. In the root of your project directory, create a file named `jest.selenium.config.js`.
-2. This file will include the configuration for running Selenium WebDriver tests with Jest.
+1. **Test User Login**:
+   - **Description**: Check that users can log in with valid credentials.
+   - **Method**: POST
+   - **Endpoint**: `/api/login`
+   - **Steps**:
+     1. Send a POST request with user credentials.
+     2. Verify that the response status is 200 (OK).
+     3. Check that the response includes a token.
 
-### d. Create `jest.setup.selenium.js`
+## Database Connection Tests
 
-1. In the root of your project directory, create a file named `jest.setup.selenium.js`.
-2. This file will set up the global environment for Selenium WebDriver.
+### 1. Set Up Mongoose Mocks
 
-### 3. Configure Jest for Selenium WebDriver
+1. **Mock Database Connection**: Use mocking tools to simulate database connections for unit tests.
 
-1. **Edit `jest.config.cjs`**:
-    - Ensure it points to the correct setup files and has the necessary configurations.
-2. **Edit `jest.selenium.config.js`**:
-    - Configure it to use the Selenium setup and specify test environments.
-3. **Edit `jest.setup.selenium.js`**:
-    - Set up the global WebDriver instance and any necessary browser configurations.
-    - Initialize the WebDriver for testing.
+### 2. Write Database Connection Tests
 
-### 4. Write Selenium Tests
+1. **Test Successful Connection**:
+   - **Description**: Ensure that the application can connect to the database.
+   - **Steps**:
+     1. Mock the `mongoose.connect` method to simulate a successful connection.
+     2. Verify that the connection method is called with the correct URI.
 
-1. **Create Test Files**:
-    - Create a folder named `__tests__/selenium` in your project directory if it doesn't exist.
-    - Add test files in this folder for your Selenium-based tests.
-2. **Write Test Cases**:
-    - Use the Selenium WebDriver API to write test cases that interact with your application.
-    - Use Jest's assertion methods to verify the outcomes of your tests.
+2. **Test Connection Error Handling**:
+   - **Description**: Ensure proper error handling if the connection fails.
+   - **Steps**:
+     1. Mock the `mongoose.connect` method to simulate a connection error.
+     2. Verify that the error is logged and the process exits with a failure status.
+
+## Blog Tests
+
+### 1. Set Up Testing Environment
+
+1. **Connect to Test Database**: Ensure that you are connected to the test database and that the blog collection is empty before running tests.
+
+2. **Clean Up Data**: Clear the blog collection after each test to avoid test interference.
+
+### 2. Write Blog Tests
+
+1. **Test Creating a New Blog**:
+   - **Description**: Verify that a new blog can be created successfully.
+   - **Method**: POST
+   - **Endpoint**: `/api/blogs`
+   - **Steps**:
+     1. Send a POST request with blog details.
+     2. Verify that the response status is 201 (Created).
+     3. Check that the response contains the blog details.
+
+2. **Test Getting All Blogs**:
+   - **Description**: Check that all blogs can be retrieved.
+   - **Method**: GET
+   - **Endpoint**: `/api/blogs`
+   - **Steps**:
+     1. Send a GET request to fetch all blogs.
+     2. Verify that the response status is 200 (OK).
+     3. Ensure the response includes all blogs.
+
+3. **Test Getting a Single Blog by ID**:
+   - **Description**: Ensure that a specific blog can be retrieved by its ID.
+   - **Method**: GET
+   - **Endpoint**: `/api/blogs/:id`
+   - **Steps**:
+     1. Send a GET request with a specific blog ID.
+     2. Verify that the response status is 200 (OK).
+     3. Check that the response includes the blog details.
+
+4. **Test Updating a Blog**:
+   - **Description**: Verify that a blog can be updated successfully.
+   - **Method**: PUT
+   - **Endpoint**: `/api/blogs/:id`
+   - **Steps**:
+     1. Send a PUT request with updated blog details.
+     2. Verify that the response status is 200 (OK).
+     3. Check that the response contains the updated blog details.
+
+5. **Test Deleting a Blog**:
+   - **Description**: Ensure that a blog can be deleted successfully.
+   - **Method**: DELETE
+   - **Endpoint**: `/api/blogs/:id`
+   - **Steps**:
+     1. Send a DELETE request with a specific blog ID.
+     2. Verify that the response status is 200 (OK).
+     3. Check that the response contains the deleted blog details.
+
+
+![Supertest Figure 1](./screenshots/supertest-figure-1.png)

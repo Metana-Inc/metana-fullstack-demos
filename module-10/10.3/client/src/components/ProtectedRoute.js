@@ -1,5 +1,6 @@
 import { useAuth } from '../context/AuthProvider';
 import { Navigate } from 'react-router-dom';
+import React from 'react';
 
 // ProtectedRoute is a wrapper for pages that require login
 const ProtectedRoute = ({ children }) => {

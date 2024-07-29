@@ -1,5 +1,7 @@
 import { Link } from 'react-router-dom';
 import { useAuth } from '../context/AuthProvider';
+import React from 'react';
+
 function NavItem({ url, children }) {
   return (
     <Link

@@ -11,7 +11,3 @@ export async function connectToDatabase() {
     process.exit(1); // Exit process with failure
   }
 }
-
-export const disconnectFromDatabase = async () => {
-  await mongoose.connection.close();
-};

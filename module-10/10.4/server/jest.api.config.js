@@ -1,11 +1,12 @@
+// configuration file is used to set up Jest specifically for API testing with Supertest
+
 export default {
   testEnvironment: 'node',
   transform: {
     '^.+\\.jsx?$': 'babel-jest',
   },
-  testMatch: ['**/__tests__/selenium/**/*.test.js'],
-  setupFilesAfterEnv: ['<rootDir>/jest.setup.selenium.js'],
+  testMatch: ['**/__tests__/api/**/*.test.js'],
   collectCoverage: true,
-  coverageDirectory: 'coverage/selenium',
+  coverageDirectory: 'coverage/api',
   coverageReporters: ['json', 'lcov', 'text', 'clover'],
 };
