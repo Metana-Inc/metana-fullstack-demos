@@ -5,7 +5,7 @@ export default {
   transform: {
     '^.+\\.jsx?$': 'babel-jest',
   },
-  testMatch: ['**/__tests__/api/**/*.test.js'],
+  testMatch: ['**/__tests__/*.test.js'],
   collectCoverage: true,
   coverageDirectory: 'coverage/api',
   coverageReporters: ['json', 'lcov', 'text', 'clover'],

@@ -5,7 +5,7 @@ export default {
   transform: {
     '^.+\\.jsx?$': 'babel-jest',
   },
-  testMatch: ['**/__tests__/selenium/**/*.test.js'],
+  testMatch: ['**/__tests__/integration/**/*.test.js'],
   setupFilesAfterEnv: ['<rootDir>/jest.setup.selenium.js'],
   collectCoverage: true,
   coverageDirectory: 'coverage/selenium',

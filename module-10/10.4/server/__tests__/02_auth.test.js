@@ -1,9 +1,9 @@
 import request from 'supertest';
-import app from '../../index.js';
-import User from '../../models/User.js';
-import { connectToDatabase, disconnectFromDatabase } from '../../db/dbconn.js';
+import app from '../index.js';
+import User from '../models/User.js';
+import { connectToDatabase, disconnectFromDatabase } from '../db/dbconn.js';
 import bcrypt from 'bcrypt';
-import { MONGO_URI_TEST } from '../../config.js';
+import { MONGO_URI_TEST } from '../config.js';
 
 jest.setTimeout(30000);
 

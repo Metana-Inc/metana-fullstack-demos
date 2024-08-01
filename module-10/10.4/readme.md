@@ -53,7 +53,7 @@ This guide will walk you through the process of setting up automated browser tes
 ### 4. Write Selenium Tests
 
 1. **Create Test Files**:
-    - Create a folder named `__tests__/selenium` in your project directory if it doesn't exist.
+    - Create a folder named `__tests__/integration` in your project directory if it doesn't exist.
     - Add test files in this folder for your Selenium-based tests.
 2. **Write Test Cases**:
     - Use the Selenium WebDriver API to write test cases that interact with your application.

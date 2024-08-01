@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
-import { connectToDatabase } from '../../db/dbconn.js';
-import { MONGO_URI } from '../../config.js';
+import { connectToDatabase } from '../db/dbconn.js';
+import { MONGO_URI } from '../config.js';
 
 jest.mock('mongoose');
 

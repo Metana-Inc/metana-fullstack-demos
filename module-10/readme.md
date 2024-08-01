@@ -72,6 +72,6 @@ In Module 10, we explored various testing techniques to ensure the reliability, 
     - Create a Jest setup file to initialize and tear down the Selenium WebDriver.
     - Update npm scripts to include commands for running Selenium tests.
   - **Running and Validating Selenium Tests**
-    - Execute Selenium tests using the `npm testselenium` command.
+    - Execute Selenium tests using the `npm test:selenium` command.
     - Validate that browser interactions are performed correctly and expected outcomes are met.
     - Review and debug any issues in the test execution.
